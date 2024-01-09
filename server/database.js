@@ -12,6 +12,8 @@ const connection = mysql.createConnection({
 
 // If in development mode, use dev database.
 if (process.env.NODE_ENV === "development") {
+  console.log("using dev database");
+  console.log(process.env.DEV_DB_HOST);
   connection = mysql.createConnection({
     host: process.env.DEV_DB_HOST,
     port: process.env.DEV_DB_PORT,
@@ -21,4 +23,9 @@ if (process.env.NODE_ENV === "development") {
   });
 }
 
-export default connection;
+connection.connect((err) => {
+  if (err) throw err;
+  console.log("Connected to MySQL database!");
+});
+
+module.exports = connection;
