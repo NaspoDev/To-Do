@@ -7,16 +7,24 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-const connection = require("./database");
+const db = require("./database");
 
 // users route
-// need to setup mysql database!
 app.get("/users", (req, res) => {
-  connection.query("SELECT * FROM users", (err, rows) => {
+  db.query("SELECT * FROM users", (err, rows) => {
     if (err) throw err;
-    console.log(rows);
     res.json(rows);
   });
 });
+
+// tasks route
+app.get("/tasks", (req, res) => {
+  db.query("SELECT * FROM tasks", (err, rows) => {
+    if (err) throw err;
+    res.json(rows);
+  });
+});
+
+// TODO: add a route for POSTing data
 
 app.listen(port, () => console.log(`Listening on port ${port}!`));
