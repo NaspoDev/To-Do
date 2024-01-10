@@ -21,4 +21,14 @@ router.get("/:id", (req, res) => {
   });
 });
 
+// create a new user
+router.post("/", (req, res) => {
+  const { dateCreated } = req.body;
+
+  db.query(`INSERT INTO users () VALUES ()`, (err, rows) => {
+    if (err) throw err;
+    res.json({ message: "User created successfully!", user: rows });
+  });
+});
+
 module.exports = router;
