@@ -5,6 +5,8 @@ const router = express.Router();
 
 const db = require("../database");
 
+// --- GET REQUESTS ---
+
 // get all users
 router.get("/", (req, res) => {
   db.query("SELECT * FROM users", (err, rows) => {
@@ -21,10 +23,10 @@ router.get("/:id", (req, res) => {
   });
 });
 
+// --- POST REQUESTS ---
+
 // create a new user
 router.post("/", (req, res) => {
-  const { dateCreated } = req.body;
-
   db.query(`INSERT INTO users () VALUES ()`, (err, rows) => {
     if (err) throw err;
     res.json({ message: "User created successfully!", user: rows });
