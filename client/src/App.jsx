@@ -1,14 +1,11 @@
-import { useState } from "react";
 import "./css/App.css";
+import ToDoContainer from "./components/ToDoContainer";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <button className="counter-button">Click me</button>
-      <h3>{count}</h3>
-    </>
+    <div className="App">
+      <ToDoContainer />
+    </div>
   );
 }
 
