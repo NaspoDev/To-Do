@@ -17,10 +17,14 @@ function ToDoInput() {
         />
 
         {/* Due date button */}
-        <button className="due-date-button"></button>
+        <button className="due-date-button">
+          <i className="fa-solid fa-calendar"></i>
+        </button>
 
         {/* Submit new to-do button */}
-        <button className="submit-to-do-button"></button>
+        <button className="submit-to-do-button">
+          <i className="fa-solid fa-plus"></i>
+        </button>
       </div>
     </form>
   );
