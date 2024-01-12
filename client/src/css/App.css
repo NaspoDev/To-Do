@@ -89,3 +89,21 @@ img {
   margin: 0;
   font-family: "Poppins ExtraLight";
 }
+.ToDoContainer .to-do-input-form {
+  width: 95%;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.ToDoContainer .to-do-input-form .to-do-input-field {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 8fr 1fr 1fr;
+}
+.ToDoContainer .to-do-input-form .to-do-input-field input[type=text] {
+  border: none;
+  outline: none;
+  padding: 0 10px;
+}
