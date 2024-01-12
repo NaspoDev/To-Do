@@ -14,7 +14,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, li, a {
-  font-family: "Font 1 Name";
+  color: #faf9f6;
 }
 
 h1 {
@@ -30,7 +30,7 @@ h3 {
 }
 
 p, button, input, textarea {
-  font-family: "Font 2 Name";
+  color: #faf9f6;
   font-size: 18px;
 }
 
