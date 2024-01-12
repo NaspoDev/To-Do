@@ -9,11 +9,24 @@ html {
   scroll-behavior: smooth;
 }
 
+@font-face {
+  font-family: "Poppins Medium";
+  src: url(src/assets/fonts/Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: "Poppins Regular";
+  src: url(src/assets/fonts/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: "Poppins ExtraLight";
+  src: url(src/assets/fonts/Poppins-ExtraLight.ttf);
+}
 body {
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, li, a {
+  font-family: "Poppins Medium";
   color: #faf9f6;
 }
 
@@ -30,6 +43,7 @@ h3 {
 }
 
 p, button, input, textarea {
+  font-family: "Poppins Regular";
   color: #faf9f6;
   font-size: 18px;
 }

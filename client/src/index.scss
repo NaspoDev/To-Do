@@ -13,16 +13,22 @@ html {
 
 // Fonts
 // Bolder font face, mainly used for headings.
-// @font-face {
-//   font-family: "Font 1 Name";
-//   src: url(path/to/font/file);
-// }
+@font-face {
+  font-family: "Poppins Medium";
+  src: url(src/assets/fonts/Poppins-Medium.ttf);
+}
 
-// Lighter font face, mainly used for paragraphs.
-// @font-face {
-//   font-family: "Font 2 Name";
-//   src: url(path/to/font/file);
-// }
+// Regular font face, mainly used for paragraphs.
+@font-face {
+  font-family: "Poppins Regular";
+  src: url(src/assets/fonts/Poppins-Regular.ttf);
+}
+
+// Light font face.
+@font-face {
+  font-family: "Poppins ExtraLight";
+  src: url(src/assets/fonts/Poppins-ExtraLight.ttf);
+}
 
 // Variables
 $background-color-teal: #008080;
@@ -34,7 +40,7 @@ body {
 
 // prettier-ignore
 h1, h2, h3, h4, h5, h6, li, a {
-    // font-family: "";
+    font-family: "Poppins Medium";
     color: $text-color-white;
   }
 
@@ -52,7 +58,7 @@ h3 {
 
 // prettier-ignore
 p, button, input, textarea {
-  // font-family: "";
+  font-family: "Poppins Regular";
   color: $text-color-white;
   font-size: 18px;
   }
