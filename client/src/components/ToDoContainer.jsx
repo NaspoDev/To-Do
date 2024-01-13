@@ -1,6 +1,6 @@
 // ToDoContainer Component
 
-import ToDoInput from "./ToDoInput";
+import ToDoForm from "./ToDoForm";
 
 const daysOfTheWeek = [
   "Sunday",
@@ -38,8 +38,8 @@ function ToDoContainer() {
       <div className="heading-area">
         <h1 className="main-heading">My To-Do List</h1>
         <h2 className="date-subheading">{fullDateFormatted}</h2>
-        <ToDoInput />
       </div>
+      <ToDoForm />
     </div>
   );
 }

@@ -32,7 +32,10 @@ html {
 
 // Variables
 $background-color-teal: #008080;
+$teal-dark: #006666;
+$coral: #ff7f50;
 $text-color-white: #faf9f6;
+$error-red: #ffcccc;
 
 body {
   overflow-x: hidden;
@@ -69,4 +72,39 @@ a {
 
 img {
   max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 30px;
+  background-color: $teal-dark;
+  transition: 0.5s;
+
+  & .icon {
+    color: coral;
+  }
+
+  &:hover {
+    background-color: $coral;
+    border: none;
+    color: $text-color-white;
+  }
+
+  &:hover .icon {
+    color: $text-color-white;
+  }
+}
+
+// Other global styles
+
+// hidden utility class, hides the element.
+.hidden {
+  opacity: 0;
+}
+
+.error-msg {
+  color: $error-red;
+  font-size: 16px;
+  font-family: "Poppins Regular";
 }

@@ -55,3 +55,32 @@ a {
 img {
   max-width: 100%;
 }
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 30px;
+  background-color: #006666;
+  transition: 0.5s;
+}
+button .icon {
+  color: coral;
+}
+button:hover {
+  background-color: #ff7f50;
+  border: none;
+  color: #faf9f6;
+}
+button:hover .icon {
+  color: #faf9f6;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.error-msg {
+  color: #ffcccc;
+  font-size: 16px;
+  font-family: "Poppins Regular";
+}

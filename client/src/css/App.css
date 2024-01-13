@@ -56,6 +56,35 @@ img {
   max-width: 100%;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+  padding: 10px 30px;
+  background-color: #006666;
+  transition: 0.5s;
+}
+button .icon {
+  color: coral;
+}
+button:hover {
+  background-color: #ff7f50;
+  border: none;
+  color: #faf9f6;
+}
+button:hover .icon {
+  color: #faf9f6;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.error-msg {
+  color: #ffcccc;
+  font-size: 16px;
+  font-family: "Poppins Regular";
+}
+
 .App {
   width: 100%;
   height: 100vh;
@@ -69,7 +98,7 @@ img {
 .ToDoContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   width: 50%;
   height: 90%;
@@ -82,28 +111,38 @@ img {
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  height: 20%;
+  height: 15%;
 }
 .ToDoContainer .heading-area .date-subheading {
   font-size: 22px;
-  margin: 0;
   font-family: "Poppins ExtraLight";
 }
-.ToDoContainer .to-do-input-form {
+.ToDoContainer .ToDoForm {
   width: 95%;
-  height: 50px;
+  height: auto;
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  margin-top: 20px;
 }
-.ToDoContainer .to-do-input-form .to-do-input-field {
+.ToDoContainer .ToDoForm .to-do-input-field {
   width: 100%;
-  height: 100%;
+  height: 50px;
   display: grid;
-  grid-template-columns: 8fr 1fr 1fr;
+  grid-template-columns: 7fr auto auto;
+  gap: 10px;
 }
-.ToDoContainer .to-do-input-form .to-do-input-field input[type=text] {
+.ToDoContainer .ToDoForm .to-do-input-field input[type=text] {
   border: none;
   outline: none;
   padding: 0 10px;
+  background-color: #006666;
+}
+.ToDoContainer .ToDoForm .to-do-input-field input[type=text]::placeholder, .ToDoContainer .ToDoForm .to-do-input-field input[type=text]::-webkit-input-placeholder, .ToDoContainer .ToDoForm .to-do-input-field input[type=text]::-moz-placeholder {
+  color: #faf9f6;
+}
+.ToDoContainer .ToDoForm .to-do-input-field input[type=text]:focus {
+  border: 1px solid #ff7f50;
+}
+.ToDoContainer .ToDoForm .error-msg {
+  padding-top: 5px;
 }
