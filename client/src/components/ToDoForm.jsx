@@ -24,7 +24,13 @@ function ToDoForm() {
         />
 
         {/* Due date button */}
-        <button className="due-date-button">
+        <button
+          className="due-date-button"
+          onClick={() => {
+            // Reveal the due date selector (input type=datetime-local).
+            document.getElementById("due-date-selector").focus();
+          }}
+        >
           <i className="fa-solid fa-calendar icon"></i>
         </button>
 
@@ -33,6 +39,9 @@ function ToDoForm() {
           <i className="fa-solid fa-plus icon"></i>
         </button>
       </div>
+
+      {/* Hidden by default. To be used when the due date button is clicked. */}
+      <input type="datetime-local" id="due-date-selector" />
     </form>
   );
 }
