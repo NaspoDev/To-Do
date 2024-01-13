@@ -6,7 +6,14 @@ function ToDoForm() {
   const newToDoMaxLength = 200;
 
   return (
-    <form action="" className="ToDoForm">
+    <form
+      action=""
+      className="ToDoForm"
+      onSubmit={(event) => {
+        // Prevent the form from refreshing the page on submit.
+        event.preventDefault();
+      }}
+    >
       <div className="to-do-input-field">
         <input
           type="text"

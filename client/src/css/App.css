@@ -129,7 +129,7 @@ button:hover .icon {
   height: 50px;
   display: grid;
   grid-template-columns: 7fr auto auto;
-  gap: 10px;
+  gap: 5px;
 }
 .ToDoContainer .ToDoForm .to-do-input-field input[type=text] {
   border: none;
