@@ -20,8 +20,8 @@
 
   width: 50%;
   height: 90%;
-  border: 1px solid black;
   padding: 10px 20px;
+  border: 1px solid black;
 
   .heading-area {
     display: flex;
@@ -46,6 +46,8 @@
     display: flex;
     flex-direction: column;
     margin-top: 20px;
+
+    border: 1px solid black;
 
     .to-do-input-field {
       width: 100%;

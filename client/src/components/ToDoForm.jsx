@@ -33,8 +33,6 @@ function ToDoForm() {
           <i className="fa-solid fa-plus icon"></i>
         </button>
       </div>
-
-      <p className="error-msg hidden">You cannot submit an empty to-do!</p>
     </form>
   );
 }

@@ -96,15 +96,7 @@ button {
   }
 }
 
-// Other global styles
-
 // hidden utility class, hides the element.
 .hidden {
   opacity: 0;
-}
-
-.error-msg {
-  color: $error-red;
-  font-size: 16px;
-  font-family: "Poppins Regular";
 }

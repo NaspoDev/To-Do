@@ -78,9 +78,3 @@ button:hover .icon {
 .hidden {
   opacity: 0;
 }
-
-.error-msg {
-  color: #ffcccc;
-  font-size: 16px;
-  font-family: "Poppins Regular";
-}
