@@ -8,14 +8,7 @@ function ToDoForm() {
   const newToDoMaxLength = 200;
 
   return (
-    <form
-      action=""
-      className="ToDoForm"
-      onSubmit={(event) => {
-        // Prevent the form from refreshing the page on submit.
-        event.preventDefault();
-      }}
-    >
+    <form action="" className="ToDoForm" onSubmit={handleFormSubmit}>
       <div className="to-do-input-field">
         <input
           type="text"
@@ -71,6 +64,14 @@ function handleDueDateClick() {
     // Otherwise, hide it.
     document.getElementById("due-date-selector").classList.add(hiddenClass);
   }
+}
+
+// Submit's form data to the server.
+function handleFormSubmit(event) {
+  // Prevent the form from refreshing the page on submit.
+  event.preventDefault();
+
+  // TODO: Submit the form data to the server.
 }
 
 export default ToDoForm;
