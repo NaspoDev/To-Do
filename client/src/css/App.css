@@ -117,7 +117,7 @@ button:hover .icon {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
-  border: 1px solid black;
+  position: relative;
 }
 .ToDoContainer .ToDoForm .to-do-input-field {
   width: 100%;
@@ -138,6 +138,15 @@ button:hover .icon {
 .ToDoContainer .ToDoForm .to-do-input-field input[type=text]:focus {
   border: 1px solid #ff7f50;
 }
-.ToDoContainer .ToDoForm .error-msg {
-  padding-top: 5px;
+.ToDoContainer .ToDoForm .due-date-selector {
+  align-self: flex-end;
+  margin-top: 10px;
+  width: 300px;
+  height: 50px;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #333333;
+  transition: 0.5s;
 }

@@ -1,6 +1,8 @@
 // ToDoForm component.
 // This component is responsible for adding new tasks to the list.
 
+const hiddenClass = "hidden";
+
 function ToDoForm() {
   const newToDoPlaceholder = "New To-Do";
   const newToDoMaxLength = 200;
@@ -26,10 +28,8 @@ function ToDoForm() {
         {/* Due date button */}
         <button
           className="due-date-button"
-          onClick={() => {
-            // Reveal the due date selector (input type=datetime-local).
-            document.getElementById("due-date-selector").focus();
-          }}
+          id="due-date-button"
+          onClick={handleDueDateClick}
         >
           <i className="fa-solid fa-calendar icon"></i>
         </button>
@@ -41,9 +41,36 @@ function ToDoForm() {
       </div>
 
       {/* Hidden by default. To be used when the due date button is clicked. */}
-      <input type="datetime-local" id="due-date-selector" />
+      <input
+        type="datetime-local"
+        id="due-date-selector"
+        className="due-date-selector hidden"
+        onBlur={(event) => {
+          // Hide the due date selector when it loses focus.
+          // (Unless the due date button was clicked, then let the due date button handle it).
+          if (event.relatedTarget?.id !== "due-date-button") {
+            document
+              .getElementById("due-date-selector")
+              .classList.add(hiddenClass);
+          }
+        }}
+      />
     </form>
   );
+}
+
+// Handles what happens when the due date button is clicked.
+function handleDueDateClick() {
+  // If the due date selector is hidden, reveal it.
+  if (
+    document.getElementById("due-date-selector").classList.contains(hiddenClass)
+  ) {
+    document.getElementById("due-date-selector").classList.remove(hiddenClass);
+    document.getElementById("due-date-selector").focus();
+  } else {
+    // Otherwise, hide it.
+    document.getElementById("due-date-selector").classList.add(hiddenClass);
+  }
 }
 
 export default ToDoForm;
