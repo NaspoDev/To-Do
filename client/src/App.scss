@@ -4,7 +4,7 @@
 .App {
   width: 100%;
   height: 100vh;
-  background-color: $background-color-teal;
+  background-color: $background-color-beige;
 
   display: flex;
   flex-direction: column;
@@ -21,7 +21,8 @@
   width: 50%;
   height: 90%;
   padding: 10px 20px;
-  border: 1px solid black;
+  background-color: $theme-color-tan;
+  box-shadow: $text-color-black 7px 7px 10px 0px;
 
   .heading-area {
     display: flex;
@@ -31,6 +32,11 @@
 
     width: 100%;
     height: 15%;
+
+    .main-heading,
+    .date-subheading {
+      color: $text-color-black;
+    }
 
     .date-subheading {
       font-size: 22px;
@@ -59,9 +65,7 @@
         border: none;
         outline: none;
         padding: 0 10px;
-        // font-size: 18px;
-        // font-family: "Poppins Regular";
-        background-color: $teal-dark;
+        background-color: $theme-color-green;
 
         &::placeholder,
         &::-webkit-input-placeholder,
@@ -70,7 +74,7 @@
         }
 
         &:focus {
-          border: 1px solid $coral;
+          border: 1px solid $theme-color-blue;
         }
       }
     }

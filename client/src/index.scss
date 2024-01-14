@@ -31,10 +31,14 @@ html {
 }
 
 // Variables
-$background-color-teal: #008080;
-$teal-dark: #006666;
-$coral: #ff7f50;
+$background-color-beige: #f9efdb;
+$theme-color-tan: #ebd9b4;
+$theme-color-green: #9dbc98;
+$theme-color-blue: #638889;
+
 $text-color-white: #faf9f6;
+$text-color-black: #212427;
+
 $dark-grey: #333333;
 $error-red: #ffcccc;
 
@@ -79,15 +83,15 @@ button {
   cursor: pointer;
   border: none;
   padding: 10px 30px;
-  background-color: $teal-dark;
+  background-color: $theme-color-green;
   transition: 0.5s;
 
   & .icon {
-    color: coral;
+    color: $theme-color-blue;
   }
 
   &:hover {
-    background-color: $coral;
+    background-color: $theme-color-blue;
     border: none;
     color: $text-color-white;
   }
