@@ -15,12 +15,12 @@
 .ToDoContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
 
   width: 50%;
   height: 90%;
-  padding: 10px 20px;
+  padding: 10px 30px;
   background-color: $theme-color-tan;
   box-shadow: $text-color-black 7px 7px 10px 0px;
 
@@ -47,7 +47,7 @@
   // ToDoForm
 
   .ToDoForm {
-    width: 95%;
+    width: 100%;
     height: 50px;
     display: flex;
     flex-direction: column;
@@ -101,7 +101,7 @@
   }
 
   .ToDoList {
-    width: 95%;
+    width: 100%;
     height: 60%;
     margin-top: 20px;
 

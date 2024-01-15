@@ -92,11 +92,11 @@ button:hover .icon {
 .ToDoContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-start;
   width: 50%;
   height: 90%;
-  padding: 10px 20px;
+  padding: 10px 30px;
   background-color: #ebd9b4;
   box-shadow: #212427 7px 7px 10px 0px;
 }
@@ -117,7 +117,7 @@ button:hover .icon {
   font-family: "Poppins ExtraLight";
 }
 .ToDoContainer .ToDoForm {
-  width: 95%;
+  width: 100%;
   height: 50px;
   display: flex;
   flex-direction: column;
@@ -159,7 +159,7 @@ button:hover .icon {
   transition: 0.5s;
 }
 .ToDoContainer .ToDoList {
-  width: 95%;
+  width: 100%;
   height: 60%;
   margin-top: 20px;
   border: 1px solid black;
