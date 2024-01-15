@@ -22,13 +22,14 @@ function ToDoForm({ addTask }) {
         <button
           className="due-date-button"
           id="due-date-button"
+          type="button"
           onClick={handleDueDateClick}
         >
           <i className="fa-solid fa-calendar icon"></i>
         </button>
 
         {/* Submit new to-do button */}
-        <button className="submit-to-do-button">
+        <button className="submit-to-do-button" type="submit">
           <i className="fa-solid fa-plus icon"></i>
         </button>
       </div>
@@ -55,16 +56,26 @@ function ToDoForm({ addTask }) {
 
   // Submit's form data to the server.
   function handleFormSubmit(event) {
+    console.log("submit event fired!");
     // Prevent the form from refreshing the page on submit.
     event.preventDefault();
 
-    // Create and add a new ToDo item to the ToDoList.
+    // If the input value is blank (only whitespace), don't add a new task.
+    if (document.getElementById("to-do-input").value.trim().length === 0) {
+      return;
+    }
+
+    // Create and add a new task to the ToDoList.
     let newTask = {
       description: document.getElementById("to-do-input").value,
       dueDate: document.getElementById("due-date-selector").value,
     };
 
     addTask(newTask);
+
+    // Clear the form.
+    document.getElementById("to-do-input").value = "";
+    document.getElementById("due-date-selector").value = "";
 
     // TODO: Submit the form data to the server.
   }
