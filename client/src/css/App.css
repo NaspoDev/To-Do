@@ -161,5 +161,6 @@ button:hover .icon {
 .ToDoContainer .ToDoList {
   width: 95%;
   height: 60%;
+  margin-top: 20px;
   border: 1px solid black;
 }

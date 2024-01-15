@@ -2,6 +2,7 @@
 
 import ToDoForm from "./ToDoForm";
 import ToDoList from "./ToDoList";
+import { useState } from "react";
 
 const daysOfTheWeek = [
   "Sunday",
@@ -34,14 +35,21 @@ function ToDoContainer() {
   let writtenMonth = months[currentDate.getMonth()];
   let fullDateFormatted = `${writtenDay}, ${writtenMonth} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
 
+  // Lifting state up from ToDoForm to be shared with ToDoList
+  const [tasks, setTasks] = useState([]);
+
+  function addTask(task) {
+    setTasks([...tasks, task]);
+  }
+
   return (
     <div className="ToDoContainer">
       <div className="heading-area">
         <h1 className="main-heading">My To-Do List</h1>
         <h2 className="date-subheading">{fullDateFormatted}</h2>
       </div>
-      <ToDoForm />
-      {/* <ToDoList /> */}
+      <ToDoForm addTask={addTask} />
+      <ToDoList tasks={tasks} />
     </div>
   );
 }

@@ -3,7 +3,7 @@
 
 const hiddenClass = "hidden";
 
-function ToDoForm() {
+function ToDoForm({ addTask }) {
   const newToDoPlaceholder = "New To-Do";
   const newToDoMaxLength = 200;
 
@@ -52,6 +52,22 @@ function ToDoForm() {
       </div>
     </form>
   );
+
+  // Submit's form data to the server.
+  function handleFormSubmit(event) {
+    // Prevent the form from refreshing the page on submit.
+    event.preventDefault();
+
+    // Create and add a new ToDo item to the ToDoList.
+    let newTask = {
+      description: document.getElementById("to-do-input").value,
+      dueDate: document.getElementById("due-date-selector").value,
+    };
+
+    addTask(newTask);
+
+    // TODO: Submit the form data to the server.
+  }
 }
 
 // Handles what happens when the due date button is clicked.
@@ -66,14 +82,6 @@ function handleDueDateClick() {
     // Otherwise, hide it.
     document.getElementById("due-date-selector").classList.add(hiddenClass);
   }
-}
-
-// Submit's form data to the server.
-function handleFormSubmit(event) {
-  // Prevent the form from refreshing the page on submit.
-  event.preventDefault();
-
-  // TODO: Submit the form data to the server.
 }
 
 export default ToDoForm;
