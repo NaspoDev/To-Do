@@ -75,6 +75,10 @@ button:hover .icon {
   color: #faf9f6;
 }
 
+input[type=checkbox] {
+  cursor: pointer;
+}
+
 .hidden {
   opacity: 0;
 }

@@ -3,8 +3,17 @@
 function Task({ description, dueDate }) {
   return (
     <li className="Task">
-      <p className="task-description">{description}</p>
-      <p className="task-due-date">{dueDate}</p>
+      <input type="checkbox" className="task-checkbox" />
+
+      <div className="task-content-container">
+        <p className="task-description">{description}</p>
+        <p className="task-due-date">{dueDate}</p>
+      </div>
+
+      {/* <div className="other-task-actions-container">
+        <button className="edit-task-button">Edit</button>
+        <button className="delete-task-button">Delete</button>
+      </div> */}
     </li>
   );
 }

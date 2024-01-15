@@ -101,6 +101,10 @@ button {
   }
 }
 
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
 // hidden utility class, hides the element.
 .hidden {
   opacity: 0;
