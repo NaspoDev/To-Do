@@ -48,11 +48,12 @@
 
   .ToDoForm {
     width: 95%;
-    height: auto;
+    height: 50px;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
     position: relative;
+    overflow-y: visible;
 
     .to-do-input-field {
       width: 100%;
@@ -79,20 +80,29 @@
       }
     }
 
-    .due-date-selector {
+    .due-date-selector-container {
       align-self: flex-end;
       margin-top: 10px;
 
-      width: 300px;
+      width: auto;
       height: 50px;
-      font-size: 16px;
-      padding: 10px 20px;
 
-      border: none;
-      border-radius: 10px;
-      background-color: $dark-grey;
+      .due-date-selector {
+        font-size: 16px;
+        padding: 10px 20px;
 
-      transition: 0.5s;
+        border: none;
+        border-radius: 10px;
+        background-color: $dark-grey;
+
+        transition: 0.5s;
+      }
     }
+  }
+
+  .ToDoList {
+    width: 95%;
+    height: 60%;
+    border: 1px solid black;
   }
 }

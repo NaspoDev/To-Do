@@ -34,20 +34,22 @@ function ToDoForm() {
       </div>
 
       {/* Hidden by default. To be used when the due date button is clicked. */}
-      <input
-        type="datetime-local"
-        id="due-date-selector"
-        className="due-date-selector hidden"
-        onBlur={(event) => {
-          // Hide the due date selector when it loses focus.
-          // (Unless the due date button was clicked, then let the due date button handle it).
-          if (event.relatedTarget?.id !== "due-date-button") {
-            document
-              .getElementById("due-date-selector")
-              .classList.add(hiddenClass);
-          }
-        }}
-      />
+      <div className="due-date-selector-container">
+        <input
+          type="datetime-local"
+          id="due-date-selector"
+          className="due-date-selector hidden"
+          onBlur={(event) => {
+            // Hide the due date selector when it loses focus.
+            // (Unless the due date button was clicked, then let the due date button handle it).
+            if (event.relatedTarget?.id !== "due-date-button") {
+              document
+                .getElementById("due-date-selector")
+                .classList.add(hiddenClass);
+            }
+          }}
+        />
+      </div>
     </form>
   );
 }
