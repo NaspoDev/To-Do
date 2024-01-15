@@ -1,6 +1,6 @@
 // ToDoList component. This component is responsible for displaying the list of tasks.
 
-import ToDo from "./ToDo";
+import Task from "./Task";
 
 function ToDoList({ tasks }) {
   return (
@@ -8,7 +8,7 @@ function ToDoList({ tasks }) {
       <ul>
         {tasks.map((task, index) => {
           return (
-            <ToDo
+            <Task
               key={index}
               description={task.description}
               dueDate={task.dueDate}
