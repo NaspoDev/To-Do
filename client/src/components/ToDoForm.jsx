@@ -35,7 +35,10 @@ function ToDoForm({ addTask }) {
       </div>
 
       {/* Hidden by default. To be used when the due date button is clicked. */}
-      <div className="due-date-selector-container">
+      <div
+        className="due-date-selector-container"
+        id="due-date-selector-container"
+      >
         <input
           type="datetime-local"
           id="due-date-selector"
@@ -56,7 +59,6 @@ function ToDoForm({ addTask }) {
 
   // Submit's form data to the server.
   function handleFormSubmit(event) {
-    console.log("submit event fired!");
     // Prevent the form from refreshing the page on submit.
     event.preventDefault();
 

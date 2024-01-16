@@ -160,7 +160,9 @@ input[type=checkbox] {
   border: none;
   border-radius: 10px;
   background-color: #333333;
-  transition: 0.5s;
+}
+.ToDoContainer .ToDoForm .due-date-selector-container .due-date-selector.hidden {
+  display: none;
 }
 .ToDoContainer .ToDoList {
   width: 100%;
@@ -195,4 +197,25 @@ input[type=checkbox] {
   font-size: 16px;
   font-family: "Poppins ExtraLight";
   color: #faf9f6;
+}
+.ToDoContainer .ToDoList .Task .other-task-actions-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.ToDoContainer .ToDoList .Task .other-task-actions-container button {
+  background-color: transparent;
+  padding: 5px 5px;
+  font-size: 19px;
+}
+.ToDoContainer .ToDoList .Task .other-task-actions-container button .icon {
+  color: #faf9f6;
+}
+.ToDoContainer .ToDoList .Task .other-task-actions-container button:hover .icon.fa-pen-to-square {
+  color: #9dbc98;
+}
+.ToDoContainer .ToDoList .Task .other-task-actions-container button:hover .icon.fa-trash {
+  color: #ffcccc;
 }

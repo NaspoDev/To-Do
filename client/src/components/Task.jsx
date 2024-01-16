@@ -10,10 +10,14 @@ function Task({ description, dueDate }) {
         <p className="task-due-date">{dueDate}</p>
       </div>
 
-      {/* <div className="other-task-actions-container">
-        <button className="edit-task-button">Edit</button>
-        <button className="delete-task-button">Delete</button>
-      </div> */}
+      <div className="other-task-actions-container">
+        <button className="edit-task-button">
+          <i className="fa-solid fa-pen-to-square icon"></i>
+        </button>
+        <button className="delete-task-button">
+          <i className="fa-solid fa-trash icon"></i>
+        </button>
+      </div>
     </li>
   );
 }

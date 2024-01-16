@@ -95,7 +95,11 @@
         border-radius: 10px;
         background-color: $dark-grey;
 
-        transition: 0.5s;
+        // need to set display to none because it interferes
+        // with the edit and delete buttons of the first task in the list.
+        &.hidden {
+          display: none;
+        }
       }
     }
   }
@@ -138,6 +142,34 @@
           font-size: 16px;
           font-family: "Poppins ExtraLight";
           color: $text-color-white;
+        }
+      }
+
+      .other-task-actions-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+
+        button {
+          background-color: transparent;
+          padding: 5px 5px;
+          font-size: 19px;
+
+          .icon {
+            color: $text-color-white;
+          }
+
+          &:hover {
+            .icon.fa-pen-to-square {
+              color: $theme-color-green;
+            }
+
+            .icon.fa-trash {
+              color: $error-red;
+            }
+          }
         }
       }
     }
