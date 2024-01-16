@@ -35,11 +35,19 @@ function ToDoContainer() {
   let writtenMonth = months[currentDate.getMonth()];
   let fullDateFormatted = `${writtenDay}, ${writtenMonth} ${currentDate.getDate()}, ${currentDate.getFullYear()}`;
 
-  // Lifting state up from ToDoForm to be shared with ToDoList
+  // Lifting state up from ToDoForm to be shared with ToDoList.
   const [tasks, setTasks] = useState([]);
 
+  // Lifting state up function to add a task. Passed down to the ToDoForm component.
   function addTask(task) {
     setTasks([...tasks, task]);
+  }
+
+  // Lifting state up function to delete a task. Passed down to the Task component.
+  function deleteTask(taskIndex) {
+    let newTasks = [...tasks];
+    newTasks.splice(taskIndex, 1);
+    setTasks(newTasks);
   }
 
   return (
@@ -49,7 +57,7 @@ function ToDoContainer() {
         <h2 className="date-subheading">{fullDateFormatted}</h2>
       </div>
       <ToDoForm addTask={addTask} />
-      <ToDoList tasks={tasks} />
+      <ToDoList tasks={tasks} deleteTaskHandler={deleteTask} />
     </div>
   );
 }

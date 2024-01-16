@@ -2,7 +2,7 @@
 
 import Task from "./Task";
 
-function ToDoList({ tasks }) {
+function ToDoList({ tasks, deleteTaskHandler }) {
   return (
     <div className="ToDoList">
       <ul>
@@ -12,6 +12,8 @@ function ToDoList({ tasks }) {
               key={index}
               description={task.description}
               dueDate={task.dueDate}
+              id={index}
+              deleteTaskHandler={deleteTaskHandler}
             />
           );
         })}
