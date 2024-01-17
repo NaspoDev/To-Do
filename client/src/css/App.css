@@ -174,7 +174,7 @@ input[type=checkbox] {
   height: 70px;
   margin-bottom: 10px;
   display: grid;
-  grid-template-columns: auto 8fr 2fr;
+  grid-template-columns: auto 8fr 1fr;
   align-items: center;
   justify-content: flex-start;
   background-color: #638889;
@@ -198,24 +198,19 @@ input[type=checkbox] {
   font-family: "Poppins ExtraLight";
   color: #faf9f6;
 }
-.ToDoContainer .ToDoList .Task .other-task-actions-container {
+.ToDoContainer .ToDoList .Task .delete-task-button-container {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 30px;
 }
-.ToDoContainer .ToDoList .Task .other-task-actions-container button {
+.ToDoContainer .ToDoList .Task .delete-task-button-container button {
   background-color: transparent;
   padding: 5px 5px;
   font-size: 19px;
 }
-.ToDoContainer .ToDoList .Task .other-task-actions-container button .icon {
+.ToDoContainer .ToDoList .Task .delete-task-button-container button .icon {
   color: #faf9f6;
 }
-.ToDoContainer .ToDoList .Task .other-task-actions-container button:hover .icon.fa-pen-to-square {
-  color: #9dbc98;
-}
-.ToDoContainer .ToDoList .Task .other-task-actions-container button:hover .icon.fa-trash {
+.ToDoContainer .ToDoList .Task .delete-task-button-container button:hover .icon.fa-trash {
   color: #ffcccc;
 }

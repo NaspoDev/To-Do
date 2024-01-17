@@ -10,10 +10,7 @@ function Task({ description, dueDate, id, deleteTaskHandler }) {
         <p className="task-due-date">{dueDate}</p>
       </div>
 
-      <div className="other-task-actions-container">
-        <button className="edit-task-button">
-          <i className="fa-solid fa-pen-to-square icon"></i>
-        </button>
+      <div className="delete-task-button-container">
         <button
           className="delete-task-button"
           onClick={() => {

@@ -117,7 +117,7 @@
       margin-bottom: 10px;
 
       display: grid;
-      grid-template-columns: auto 8fr 2fr;
+      grid-template-columns: auto 8fr 1fr;
       align-items: center;
       justify-content: flex-start;
 
@@ -145,12 +145,10 @@
         }
       }
 
-      .other-task-actions-container {
+      .delete-task-button-container {
         display: flex;
-        flex-direction: row;
         align-items: center;
         justify-content: center;
-        gap: 30px;
 
         button {
           background-color: transparent;
@@ -162,10 +160,6 @@
           }
 
           &:hover {
-            .icon.fa-pen-to-square {
-              color: $theme-color-green;
-            }
-
             .icon.fa-trash {
               color: $error-red;
             }
