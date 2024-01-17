@@ -193,10 +193,18 @@ input[type=checkbox] {
   padding: 10px 0px 10px 25px;
   overflow: hidden;
 }
+.ToDoContainer .ToDoList .Task .task-content-container .task-description {
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
 .ToDoContainer .ToDoList .Task .task-content-container .task-due-date {
   font-size: 16px;
   font-family: "Poppins ExtraLight";
   color: #faf9f6;
+  cursor: default;
 }
 .ToDoContainer .ToDoList .Task .delete-task-button-container {
   display: flex;

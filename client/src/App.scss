@@ -138,10 +138,22 @@
         padding: 10px 0px 10px 25px;
         overflow: hidden;
 
+        .task-description {
+          width: 100%;
+          height: auto;
+          background-color: transparent;
+          border: none;
+          outline: none;
+
+          &:focus {
+          }
+        }
+
         .task-due-date {
           font-size: 16px;
           font-family: "Poppins ExtraLight";
           color: $text-color-white;
+          cursor: default;
         }
       }
 
