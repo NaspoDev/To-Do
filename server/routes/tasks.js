@@ -9,17 +9,17 @@ const db = require("../database");
 
 // get all tasks
 router.get("/", (req, res) => {
-  db.query("SELECT * FROM tasks", (err, rows) => {
+  db.query("SELECT * FROM tasks", (err, result) => {
     if (err) throw err;
-    res.json(rows);
+    res.json(result);
   });
 });
 
 // get task by id
 router.get("/:id", (req, res) => {
-  db.query(`SELECT * FROM tasks WHERE id = ${req.params.id}`, (err, rows) => {
+  db.query(`SELECT * FROM tasks WHERE id = ${req.params.id}`, (err, result) => {
     if (err) throw err;
-    res.json(rows);
+    res.json(result);
   });
 });
 
@@ -27,9 +27,9 @@ router.get("/:id", (req, res) => {
 router.get("/user/:id", (req, res) => {
   db.query(
     `SELECT * FROM tasks WHERE user_id = ${req.params.id}`,
-    (err, rows) => {
+    (err, result) => {
       if (err) throw err;
-      res.json(rows);
+      res.json(result);
     }
   );
 });
@@ -38,15 +38,16 @@ router.get("/user/:id", (req, res) => {
 
 // create a new task
 router.post("/", (req, res) => {
+  console.log(req.body);
   const { description, dueDate, userId } = req.body;
   // if dueDate is null, set dueDateValue to null, otherwise set it to the value in dueDate
-  const dueDateValue = dueDate ? `'${dueDate}'` : null;
+  const dueDateValue = dueDate ? `'${dueDate}'` : "NULL";
 
   db.query(
     `INSERT INTO tasks (description, due_date, user_id) VALUES ('${description}', ${dueDateValue}, ${userId})`,
-    (err, rows) => {
+    (err, result) => {
       if (err) throw err;
-      res.json({ message: "Task created successfully!", task: rows });
+      res.json({ message: "Task created successfully!", result: result });
     }
   );
 });
@@ -56,7 +57,7 @@ router.post("/", (req, res) => {
 // update a task
 router.put("/:id", (req, res) => {
   const { description, dueDate, completed } = req.body;
-  const dueDateValue = dueDate ? `'${dueDate}'` : null;
+  const dueDateValue = dueDate ? `'${dueDate}'` : "NULL";
 
   db.query(
     `UPDATE tasks SET description = '${description}', due_date = ${dueDateValue}, completed = ${completed} WHERE id = ${req.params.id}`
@@ -67,7 +68,7 @@ router.put("/:id", (req, res) => {
 
 // delete a task
 router.delete("/:id", (req, res) => {
-  db.query(`DELETE FROM tasks WHERE id = ${req.params.id}`, (err, rows) => {
+  db.query(`DELETE FROM tasks WHERE id = ${req.params.id}`, (err, result) => {
     if (err) throw err;
     res.json({ message: "Task successfully deleted." });
   });

@@ -9,17 +9,17 @@ const db = require("../database");
 
 // get all users
 router.get("/", (req, res) => {
-  db.query("SELECT * FROM users", (err, rows) => {
+  db.query("SELECT * FROM users", (err, result) => {
     if (err) throw err;
-    res.json(rows);
+    res.json(result);
   });
 });
 
 // get user by id
 router.get("/:id", (req, res) => {
-  db.query(`SELECT * FROM users WHERE id = ${req.params.id}`, (err, rows) => {
+  db.query(`SELECT * FROM users WHERE id = ${req.params.id}`, (err, result) => {
     if (err) throw err;
-    res.json(rows);
+    res.json(result);
   });
 });
 
@@ -27,9 +27,12 @@ router.get("/:id", (req, res) => {
 
 // create a new user
 router.post("/", (req, res) => {
-  db.query(`INSERT INTO users () VALUES ()`, (err, rows) => {
+  db.query(`INSERT INTO users () VALUES ()`, (err, result) => {
     if (err) throw err;
-    res.json({ message: "User created successfully!", user: rows });
+    res.json({
+      message: "User created successfully!",
+      result: result,
+    });
   });
 });
 

@@ -1,9 +1,11 @@
 // ToDoForm component.
 // This component is responsible for adding new tasks to the list.
 
+import apiUrl from "../api";
+
 const hiddenClass = "hidden";
 
-function ToDoForm({ addTask }) {
+function ToDoForm({ addTask, localStorageUserKey }) {
   const newToDoPlaceholder = "New To-Do";
   const newToDoMaxLength = 200;
 
@@ -57,7 +59,7 @@ function ToDoForm({ addTask }) {
     </form>
   );
 
-  // Submit's form data to the server.
+  // Submit's form data to the server to create a new task.
   function handleFormSubmit(event) {
     // Prevent the form from refreshing the page on submit.
     event.preventDefault();
@@ -79,21 +81,59 @@ function ToDoForm({ addTask }) {
     document.getElementById("to-do-input").value = "";
     document.getElementById("due-date-selector").value = "";
 
-    // TODO: Submit the form data to the server.
-  }
-}
+    // Create a new task in the database.
+    // If there is no user for this session, create a new user.
+    if (localStorage.getItem(localStorageUserKey) === null) {
+      // Create a new user.
+      fetch(`${apiUrl}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Add the new user to local storage.
+          localStorage.setItem(localStorageUserKey, data.result.insertId);
+          console.log(data);
+        });
+    }
 
-// Handles what happens when the due date button is clicked.
-function handleDueDateClick() {
-  // If the due date selector is hidden, reveal it.
-  if (
-    document.getElementById("due-date-selector").classList.contains(hiddenClass)
-  ) {
-    document.getElementById("due-date-selector").classList.remove(hiddenClass);
-    document.getElementById("due-date-selector").focus();
-  } else {
-    // Otherwise, hide it.
-    document.getElementById("due-date-selector").classList.add(hiddenClass);
+    // Create a new task.
+    fetch(`${apiUrl}/tasks`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        description: newTask.description,
+        dueDate: newTask.dueDate,
+        userId: localStorage.getItem(localStorageUserKey),
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
+
+  // Handles what happens when the due date button is clicked.
+  function handleDueDateClick() {
+    // If the due date selector is hidden, reveal it.
+    if (
+      document
+        .getElementById("due-date-selector")
+        .classList.contains(hiddenClass)
+    ) {
+      document
+        .getElementById("due-date-selector")
+        .classList.remove(hiddenClass);
+      document.getElementById("due-date-selector").focus();
+    } else {
+      // Otherwise, hide it.
+      document.getElementById("due-date-selector").classList.add(hiddenClass);
+    }
   }
 }
 
