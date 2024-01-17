@@ -1,5 +1,7 @@
 // Task component. The actual task item that will be displayed in the list.
 
+import { months } from "../utility/dates";
+
 function Task({ description, dueDate, id, deleteTaskHandler }) {
   return (
     <li className="Task">
@@ -18,7 +20,7 @@ function Task({ description, dueDate, id, deleteTaskHandler }) {
             }
           }}
         />
-        <p className="task-due-date">{dueDate}</p>
+        <p className="task-due-date">{formatDueDate(dueDate)}</p>
       </div>
 
       <div className="delete-task-button-container">
@@ -48,6 +50,32 @@ function Task({ description, dueDate, id, deleteTaskHandler }) {
 
     // TODO: Delete task server-side.
   }
+}
+
+// Format and return the due date to be displayed in the task.
+function formatDueDate(dueDate) {
+  if (dueDate === "") {
+    return "";
+  }
+
+  const date = new Date(dueDate); // due date in Date object format
+  const currentDate = new Date(); // current date in Date object format
+  const localeTimeOptions = {
+    // options for formatting the time
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+
+  let writtenMonth = months[date.getMonth()];
+  let writtenTime = date.toLocaleTimeString(undefined, localeTimeOptions);
+
+  // If the task is due this year, don't display the year.
+  if (date.getFullYear() === currentDate.getFullYear()) {
+    return `${writtenMonth} ${date.getDate()}, ${writtenTime}`;
+  }
+  // If the task is not due this year, display the year.
+  return `${writtenMonth} ${date.getDate()}, ${date.getFullYear()}, ${writtenTime}`;
 }
 
 export default Task;
