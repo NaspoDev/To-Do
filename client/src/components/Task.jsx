@@ -2,7 +2,7 @@
 
 import { months } from "../utility/dates";
 
-function Task({ description, dueDate, id, deleteTaskHandler }) {
+function Task({ description, dueDate, index, deleteTaskHandler }) {
   return (
     <li className="Task">
       <input type="checkbox" className="task-checkbox" />
@@ -45,10 +45,7 @@ function Task({ description, dueDate, id, deleteTaskHandler }) {
 
   // When the delete button for a task is clicked, delete the task.
   function handleDeleteTaskClick() {
-    // Delete the task client-side.
-    deleteTaskHandler(id);
-
-    // TODO: Delete task server-side.
+    deleteTaskHandler(index);
   }
 }
 

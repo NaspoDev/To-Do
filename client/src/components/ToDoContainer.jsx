@@ -4,6 +4,7 @@ import ToDoForm from "./ToDoForm";
 import ToDoList from "./ToDoList";
 import { useState } from "react";
 import { daysOfTheWeek, months } from "../utility/dates";
+import apiURL from "../api";
 
 function ToDoContainer() {
   let currentDate = new Date();
@@ -23,9 +24,18 @@ function ToDoContainer() {
 
   // Lifting state up function to delete a task. Passed down to the Task component.
   function deleteTask(taskIndex) {
+    // Remove the task client-side.
     let newTasks = [...tasks];
-    newTasks.splice(taskIndex, 1);
+    let removedTask = newTasks.splice(taskIndex, 1)[0];
     setTasks(newTasks);
+
+    // Remove the task server-side.
+    fetch(`${apiURL}/tasks/${removedTask.databaseId}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.log(`Error deleting task: ${error}`));
   }
 
   return (
@@ -34,7 +44,11 @@ function ToDoContainer() {
         <h1 className="main-heading">My To-Do List</h1>
         <h2 className="date-subheading">{fullDateFormatted}</h2>
       </div>
-      <ToDoForm addTask={addTask} localStorageUserKey={localStorageUserKey} />
+      <ToDoForm
+        addTask={addTask}
+        tasks={tasks}
+        localStorageUserKey={localStorageUserKey}
+      />
       <ToDoList tasks={tasks} deleteTaskHandler={deleteTask} />
     </div>
   );

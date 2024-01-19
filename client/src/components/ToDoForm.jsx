@@ -2,10 +2,11 @@
 // This component is responsible for adding new tasks to the list.
 
 import apiUrl from "../api";
+import { v4 as uuidv4 } from "uuid";
 
 const hiddenClass = "hidden";
 
-function ToDoForm({ addTask, localStorageUserKey }) {
+function ToDoForm({ addTask, tasks, localStorageUserKey }) {
   const newToDoPlaceholder = "New To-Do";
   const newToDoMaxLength = 200;
 
@@ -73,6 +74,8 @@ function ToDoForm({ addTask, localStorageUserKey }) {
     let newTask = {
       description: document.getElementById("to-do-input").value,
       dueDate: document.getElementById("due-date-selector").value,
+      clientId: uuidv4(),
+      databaseId: undefined,
     };
 
     addTask(newTask);
@@ -96,7 +99,10 @@ function ToDoForm({ addTask, localStorageUserKey }) {
         .then((data) => {
           // Add the new user to local storage.
           localStorage.setItem(localStorageUserKey, data.result.insertId);
-          console.log(data);
+          console.log(`New user successfully created.`);
+        })
+        .catch((error) => {
+          console.log(`Error creating user: ${error}`);
         });
     }
 
@@ -114,7 +120,23 @@ function ToDoForm({ addTask, localStorageUserKey }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log(`New task successfully created.`);
+        // TODO: Update the task's databaseId. currently not working.
+        // Update the new task's databaseId. We're adding this so we can easily update the task later.
+        tasks.map((task) => {
+          console.log("started mapping");
+          console.log(`current task client id: ${task.clientId}`);
+          console.log(`new task client id (target): ${newTask.clientId}`);
+          if (task.clientId === newTask.clientId) {
+            console.log(`Found the correct task! Client ID: ${task.clientId}`);
+            task.databaseId = data.result.insertId;
+            console.log(`Database id should be set to ${data.result.insertId}`);
+            return;
+          }
+        });
+      })
+      .catch((error) => {
+        console.log(`Error creating task: ${error}`);
       });
   }
 

@@ -12,7 +12,7 @@ function ToDoList({ tasks, deleteTaskHandler }) {
               key={index}
               description={task.description}
               dueDate={task.dueDate}
-              id={index}
+              index={index}
               deleteTaskHandler={deleteTaskHandler}
             />
           );
