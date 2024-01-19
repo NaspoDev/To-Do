@@ -30,11 +30,11 @@ function ToDoContainer() {
     setTasks(newTasks);
 
     // Remove the task server-side.
-    fetch(`${apiURL}/tasks/${removedTask.databaseId}`, {
+    fetch(`${apiURL}/tasks/${removedTask.uuid}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then(() => console.log(`Task ${removedTask.uuid} deleted successfully.`))
       .catch((error) => console.log(`Error deleting task: ${error}`));
   }
 

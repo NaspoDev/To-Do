@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
 // get task by uuid
 router.get("/:uuid", (req, res) => {
   db.query(
-    `SELECT * FROM tasks WHERE uuid = ${req.params.uuid}`,
+    `SELECT * FROM tasks WHERE uuid = '${req.params.uuid}'`,
     (err, result) => {
       if (err) {
         console.error(err);
@@ -92,7 +92,7 @@ router.put("/:uuid", (req, res) => {
   const dueDateValue = dueDate ? `'${dueDate}'` : "NULL";
 
   db.query(
-    `UPDATE tasks SET description = '${description}', due_date = ${dueDateValue}, completed = ${completed} WHERE id = ${req.params.id}`,
+    `UPDATE tasks SET description = '${description}', due_date = ${dueDateValue}, completed = ${completed} WHERE uuid = '${req.params.id}'`,
     (err, result) => {
       if (err) {
         console.error(err);
@@ -113,17 +113,20 @@ router.put("/:uuid", (req, res) => {
 
 // delete a task
 router.delete("/:uuid", (req, res) => {
-  db.query(`DELETE FROM tasks WHERE id = ${req.params.uuid}`, (err, result) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({
-        message: "An error occurred while deleting the task.",
-        error: err,
-      });
-      return;
+  db.query(
+    `DELETE FROM tasks WHERE uuid = '${req.params.uuid}'`,
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({
+          message: "An error occurred while deleting the task.",
+          error: err,
+        });
+        return;
+      }
+      res.json({ message: "Task successfully deleted.", result: result });
     }
-    res.json({ message: "Task successfully deleted.", result: result });
-  });
+  );
 });
 
 module.exports = router;
