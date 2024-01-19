@@ -38,6 +38,27 @@ function ToDoContainer() {
       .catch((error) => console.log(`Error deleting task: ${error}`));
   }
 
+  function restoreTasks() {
+    // If there is no user for this session, do not restore tasks.
+    if (localStorage.getItem(localStorageUserKey) === null) {
+      return;
+    }
+
+    // Otherwise if there is a user, restore their tasks from the database.
+    fetch(`${apiURL}/tasks/user/${localStorage.getItem(localStorageUserKey)}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Add the tasks to the state.
+        console.log(data);
+        // setTasks(data);
+      })
+      .catch((error) => {
+        console.log(`Error restoring tasks: ${error}`);
+      });
+  }
+
+  restoreTasks();
+
   return (
     <div className="ToDoContainer">
       <div className="heading-area">
