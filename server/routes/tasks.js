@@ -10,7 +10,14 @@ const db = require("../database");
 // get all tasks
 router.get("/", (req, res) => {
   db.query("SELECT * FROM tasks", (err, result) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      res.status(500).json({
+        message: "An error occurred while retrieving tasks.",
+        error: err,
+      });
+      return;
+    }
     res.json(result);
   });
 });
@@ -18,7 +25,14 @@ router.get("/", (req, res) => {
 // get task by id
 router.get("/:id", (req, res) => {
   db.query(`SELECT * FROM tasks WHERE id = ${req.params.id}`, (err, result) => {
-    if (err) throw err;
+    if (err) {
+      console.error(err);
+      res.status(500).json({
+        message: "An error occurred while retrieving the task.",
+        error: err,
+      });
+      return;
+    }
     res.json(result);
   });
 });
@@ -28,7 +42,14 @@ router.get("/user/:id", (req, res) => {
   db.query(
     `SELECT * FROM tasks WHERE user_id = ${req.params.id}`,
     (err, result) => {
-      if (err) throw err;
+      if (err) {
+        console.error(err);
+        res.status(500).json({
+          message: "An error occurred while retrieving tasks.",
+          error: err,
+        });
+        return;
+      }
       res.json(result);
     }
   );
@@ -46,7 +67,14 @@ router.post("/", (req, res) => {
   db.query(
     `INSERT INTO tasks (description, due_date, user_id) VALUES ('${description}', ${dueDateValue}, ${userId})`,
     (err, result) => {
-      if (err) throw err;
+      if (err) {
+        console.error(err);
+        res.status(500).json({
+          message: "An error occurred while creating the task.",
+          error: err,
+        });
+        return;
+      }
       res.json({ message: "Task created successfully!", result: result });
     }
   );
@@ -60,7 +88,18 @@ router.put("/:id", (req, res) => {
   const dueDateValue = dueDate ? `'${dueDate}'` : "NULL";
 
   db.query(
-    `UPDATE tasks SET description = '${description}', due_date = ${dueDateValue}, completed = ${completed} WHERE id = ${req.params.id}`
+    `UPDATE tasks SET description = '${description}', due_date = ${dueDateValue}, completed = ${completed} WHERE id = ${req.params.id}`,
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({
+          message: "An error occurred while updating the task.",
+          error: err,
+        });
+        return;
+      }
+      res.json({ message: "Task updated successfully!", result: result });
+    }
   );
 });
 
@@ -69,8 +108,15 @@ router.put("/:id", (req, res) => {
 // delete a task
 router.delete("/:id", (req, res) => {
   db.query(`DELETE FROM tasks WHERE id = ${req.params.id}`, (err, result) => {
-    if (err) throw err;
-    res.json({ message: "Task successfully deleted." });
+    if (err) {
+      console.error(err);
+      res.status(500).json({
+        message: "An error occurred while deleting the task.",
+        error: err,
+      });
+      return;
+    }
+    res.json({ message: "Task successfully deleted.", result: result });
   });
 });
 
