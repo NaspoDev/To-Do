@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const hiddenClass = "hidden";
 
-function ToDoForm({ addTask, tasks, localStorageUserKey }) {
+function ToDoForm({ addTask, localStorageUserKey }) {
   const newToDoPlaceholder = "New To-Do";
   const newToDoMaxLength = 200;
 
@@ -74,8 +74,7 @@ function ToDoForm({ addTask, tasks, localStorageUserKey }) {
     let newTask = {
       description: document.getElementById("to-do-input").value,
       dueDate: document.getElementById("due-date-selector").value,
-      clientId: uuidv4(),
-      databaseId: undefined,
+      uuid: uuidv4(),
     };
 
     addTask(newTask);
@@ -116,24 +115,12 @@ function ToDoForm({ addTask, tasks, localStorageUserKey }) {
         description: newTask.description,
         dueDate: newTask.dueDate,
         userId: localStorage.getItem(localStorageUserKey),
+        uuid: newTask.uuid,
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         console.log(`New task successfully created.`);
-        // TODO: Update the task's databaseId. currently not working.
-        // Update the new task's databaseId. We're adding this so we can easily update the task later.
-        tasks.map((task) => {
-          console.log("started mapping");
-          console.log(`current task client id: ${task.clientId}`);
-          console.log(`new task client id (target): ${newTask.clientId}`);
-          if (task.clientId === newTask.clientId) {
-            console.log(`Found the correct task! Client ID: ${task.clientId}`);
-            task.databaseId = data.result.insertId;
-            console.log(`Database id should be set to ${data.result.insertId}`);
-            return;
-          }
-        });
       })
       .catch((error) => {
         console.log(`Error creating task: ${error}`);

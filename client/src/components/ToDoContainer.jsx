@@ -44,11 +44,7 @@ function ToDoContainer() {
         <h1 className="main-heading">My To-Do List</h1>
         <h2 className="date-subheading">{fullDateFormatted}</h2>
       </div>
-      <ToDoForm
-        addTask={addTask}
-        tasks={tasks}
-        localStorageUserKey={localStorageUserKey}
-      />
+      <ToDoForm addTask={addTask} localStorageUserKey={localStorageUserKey} />
       <ToDoList tasks={tasks} deleteTaskHandler={deleteTask} />
     </div>
   );

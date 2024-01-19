@@ -1,4 +1,5 @@
 // tasks route
+// For tasks, we will work with their uuids instead of their database ids.
 
 const express = require("express");
 const router = express.Router();
@@ -22,19 +23,22 @@ router.get("/", (req, res) => {
   });
 });
 
-// get task by id
-router.get("/:id", (req, res) => {
-  db.query(`SELECT * FROM tasks WHERE id = ${req.params.id}`, (err, result) => {
-    if (err) {
-      console.error(err);
-      res.status(500).json({
-        message: "An error occurred while retrieving the task.",
-        error: err,
-      });
-      return;
+// get task by uuid
+router.get("/:uuid", (req, res) => {
+  db.query(
+    `SELECT * FROM tasks WHERE uuid = ${req.params.uuid}`,
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({
+          message: "An error occurred while retrieving the task.",
+          error: err,
+        });
+        return;
+      }
+      res.json(result);
     }
-    res.json(result);
-  });
+  );
 });
 
 // get tasks by user id
@@ -60,12 +64,12 @@ router.get("/user/:id", (req, res) => {
 // create a new task
 router.post("/", (req, res) => {
   console.log(req.body);
-  const { description, dueDate, userId } = req.body;
+  const { description, dueDate, userId, uuid } = req.body;
   // if dueDate is null, set dueDateValue to null, otherwise set it to the value in dueDate
   const dueDateValue = dueDate ? `'${dueDate}'` : "NULL";
 
   db.query(
-    `INSERT INTO tasks (description, due_date, user_id) VALUES ('${description}', ${dueDateValue}, ${userId})`,
+    `INSERT INTO tasks (description, due_date, user_id, uuid) VALUES ('${description}', ${dueDateValue}, ${userId}, '${uuid}')`,
     (err, result) => {
       if (err) {
         console.error(err);
@@ -83,7 +87,7 @@ router.post("/", (req, res) => {
 // PUT REQUESTS
 
 // update a task
-router.put("/:id", (req, res) => {
+router.put("/:uuid", (req, res) => {
   const { description, dueDate, completed } = req.body;
   const dueDateValue = dueDate ? `'${dueDate}'` : "NULL";
 
@@ -103,11 +107,13 @@ router.put("/:id", (req, res) => {
   );
 });
 
+//
+
 // DELETE REQUESTS
 
 // delete a task
-router.delete("/:id", (req, res) => {
-  db.query(`DELETE FROM tasks WHERE id = ${req.params.id}`, (err, result) => {
+router.delete("/:uuid", (req, res) => {
+  db.query(`DELETE FROM tasks WHERE id = ${req.params.uuid}`, (err, result) => {
     if (err) {
       console.error(err);
       res.status(500).json({
