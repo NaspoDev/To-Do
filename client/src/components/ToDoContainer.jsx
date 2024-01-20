@@ -3,6 +3,7 @@
 import ToDoForm from "./ToDoForm";
 import ToDoList from "./ToDoList";
 import { useState } from "react";
+import { useEffect } from "react";
 import { daysOfTheWeek, months } from "../utility/dates";
 import apiURL from "../api";
 
@@ -34,10 +35,11 @@ function ToDoContainer() {
       method: "DELETE",
     })
       .then((response) => response.json())
-      .then(() => console.log(`Task ${removedTask.uuid} deleted successfully.`))
+      .then(() => console.log(`Task deleted successfully.`))
       .catch((error) => console.log(`Error deleting task: ${error}`));
   }
 
+  // Restore the user's tasks from the database.
   function restoreTasks() {
     // If there is no user for this session, do not restore tasks.
     if (localStorage.getItem(localStorageUserKey) === null) {
@@ -49,15 +51,21 @@ function ToDoContainer() {
       .then((response) => response.json())
       .then((data) => {
         // Add the tasks to the state.
+        console.log("restoring data...");
         console.log(data);
-        // setTasks(data);
+        // TODO: set the tasks from the data!
+        // probably need to map over the data and create a new array of task objects,
+        // then set the tasks to that array.
       })
       .catch((error) => {
         console.log(`Error restoring tasks: ${error}`);
       });
   }
 
-  restoreTasks();
+  // useEffect hook to restore tasks from the database when the component mounts.
+  useEffect(() => {
+    restoreTasks();
+  }, []);
 
   return (
     <div className="ToDoContainer">
