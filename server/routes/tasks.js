@@ -66,9 +66,7 @@ router.post("/", (req, res) => {
   console.log(req.body);
   const { description, dueDate, userId, uuid } = req.body;
   // if dueDate is null, set dueDateValue to null, otherwise set it to the value in dueDate
-  const dueDateValue = dueDate ? `'${dueDate}'` : "NULL";
-  console.log(dueDateValue);
-  console.log(userId);
+  const dueDateValue = dueDate ? dueDate : null;
 
   db.query(
     "INSERT INTO tasks (description, due_date, user_id, uuid) VALUES (?, ?, ?, ?)",
@@ -95,7 +93,8 @@ router.put("/:uuid", (req, res) => {
   const dueDateValue = dueDate ? `'${dueDate}'` : "NULL";
 
   db.query(
-    `UPDATE tasks SET description = '${description}', due_date = ${dueDateValue}, completed = ${completed} WHERE uuid = '${req.params.id}'`,
+    "UPDATE tasks SET description = ?, due_date = ?, completed = ? WHERE uuid = ?",
+    [description, dueDateValue, completed, req.params.uuid],
     (err, result) => {
       if (err) {
         console.error(err);
