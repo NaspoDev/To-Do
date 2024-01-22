@@ -73,7 +73,7 @@ function Task({
 
 // Format and return the due date to be displayed in the task.
 function formatDueDate(dueDate) {
-  if (dueDate === "") {
+  if (dueDate === "" || dueDate === null) {
     return "";
   }
 
