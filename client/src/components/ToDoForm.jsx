@@ -3,6 +3,7 @@
 
 import apiUrl from "../api";
 import { v4 as uuidv4 } from "uuid";
+import Task from "../utility/Task";
 
 const hiddenClass = "hidden";
 
@@ -71,11 +72,11 @@ function ToDoForm({ addTask, localStorageUserKey }) {
     }
 
     // Create and add a new task to the ToDoList.
-    let newTask = {
-      description: document.getElementById("to-do-input").value,
-      dueDate: document.getElementById("due-date-selector").value,
-      uuid: uuidv4(),
-    };
+    let newTask = new Task(
+      document.getElementById("to-do-input").value,
+      document.getElementById("due-date-selector").value,
+      uuidv4()
+    );
 
     addTask(newTask);
 

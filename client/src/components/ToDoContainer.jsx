@@ -5,6 +5,7 @@ import ToDoList from "./ToDoList";
 import { useState } from "react";
 import { useEffect } from "react";
 import { daysOfTheWeek, months } from "../utility/dates";
+import Task from "../utility/Task";
 import apiURL from "../api";
 
 function ToDoContainer() {
@@ -41,21 +42,31 @@ function ToDoContainer() {
 
   // Restore the user's tasks from the database.
   function restoreTasks() {
+    const userId = localStorage.getItem(localStorageUserKey);
+
     // If there is no user for this session, do not restore tasks.
-    if (localStorage.getItem(localStorageUserKey) === null) {
+    if (userId === null) {
       return;
     }
 
     // Otherwise if there is a user, restore their tasks from the database.
-    fetch(`${apiURL}/tasks/user/${localStorage.getItem(localStorageUserKey)}`)
+    fetch(`${apiURL}/tasks/user/${userId}`)
       .then((response) => response.json())
       .then((data) => {
-        // Add the tasks to the state.
-        console.log("restoring data...");
-        console.log(data);
-        // TODO: set the tasks from the data!
-        // probably need to map over the data and create a new array of task objects,
-        // then set the tasks to that array.
+        console.log(`Restoring tasks for user ${userId}...`);
+        // Create a list of Task objects from the data and set the tasks state.
+        let restoredTasks = data.map((task) => {
+          let newTask = new Task(task.description, task.due_date, task.uuid);
+
+          if (task.completed === 1) {
+            newTask.setCompleted();
+          }
+
+          return newTask;
+        });
+
+        setTasks(restoredTasks);
+        console.log("Tasks successfully restored.");
       })
       .catch((error) => {
         console.log(`Error restoring tasks: ${error}`);
