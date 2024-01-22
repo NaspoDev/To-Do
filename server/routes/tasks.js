@@ -90,7 +90,7 @@ router.post("/", (req, res) => {
 // update a task
 router.put("/:uuid", (req, res) => {
   const { description, dueDate, completed } = req.body;
-  const dueDateValue = dueDate ? `'${dueDate}'` : "NULL";
+  const dueDateValue = dueDate ? dueDate : null;
 
   db.query(
     "UPDATE tasks SET description = ?, due_date = ?, completed = ? WHERE uuid = ?",

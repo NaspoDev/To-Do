@@ -2,10 +2,20 @@
 
 import { months } from "../utility/dates";
 
-function Task({ description, dueDate, index, deleteTaskHandler }) {
+function Task({
+  description,
+  dueDate,
+  index,
+  deleteTaskHandler,
+  updateTaskHandler,
+}) {
   return (
     <li className="Task">
-      <input type="checkbox" className="task-checkbox" />
+      <input
+        type="checkbox"
+        className="task-checkbox"
+        onChange={handleCheckboxClick}
+      />
 
       <div className="task-content-container">
         <input
@@ -40,7 +50,17 @@ function Task({ description, dueDate, index, deleteTaskHandler }) {
       return;
     }
 
-    // TODO: Update the task description in the database.
+    // Update the task client-side and server-side.
+    updateTaskHandler(index, event.currentTarget.value, dueDate, false);
+  }
+
+  // When the checkbox is clicked, update the task's completed status.
+  function handleCheckboxClick(event) {
+    if (event.currentTarget.checked) {
+      updateTaskHandler(index, description, dueDate, true);
+    } else {
+      updateTaskHandler(index, description, dueDate, false);
+    }
   }
 
   // When the delete button for a task is clicked, delete the task.

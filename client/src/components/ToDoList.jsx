@@ -3,7 +3,7 @@
 import Task from "./Task";
 import { useState } from "react";
 
-function ToDoList({ tasks, deleteTaskHandler }) {
+function ToDoList({ tasks, deleteTaskHandler, updateTaskHandler }) {
   // List state to display. 0 = active tasks (incomplete tasks), 1 = completed tasks
   const [listState, setListState] = useState(0);
 
@@ -26,21 +26,24 @@ function ToDoList({ tasks, deleteTaskHandler }) {
                 dueDate={task.dueDate}
                 index={index}
                 deleteTaskHandler={deleteTaskHandler}
+                updateTaskHandler={updateTaskHandler}
               />
             );
           })}
         </ul>
       </div>
 
-      <button className="toggle-list-state-button" onClick={toggleListState}>
-        {listState ? "Show Completed" : "Show Active"}
-      </button>
+      <div className="toggle-list-state-button-container">
+        <button className="toggle-list-state-button" onClick={toggleListState}>
+          {listState ? "Show Completed" : "Show Active"}
+        </button>
+      </div>
     </div>
   );
 
   // Toggle the list state between active and completed.
   function toggleListState() {
-    setListState(listState === 0 ? 1 : 0);
+    setListState(listState ? 0 : 1);
   }
 }
 

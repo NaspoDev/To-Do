@@ -40,6 +40,33 @@ function ToDoContainer() {
       .catch((error) => console.log(`Error deleting task: ${error}`));
   }
 
+  // Lifting state up function to update a task. Passed down to the Task component.
+  // Updates the task client-side and server-side.
+  function updateTask(taskIndex, description, dueDate, completed) {
+    // Update the task client-side.
+    let newTasks = [...tasks];
+    newTasks[taskIndex].description = description;
+    newTasks[taskIndex].dueDate = dueDate;
+    newTasks[taskIndex].completed = completed;
+    setTasks(newTasks);
+
+    // Update the task server-side.
+    fetch(`${apiURL}/tasks/${newTasks[taskIndex].uuid}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        description: description,
+        dueDate: dueDate,
+        completed: completed,
+      }),
+    })
+      .then((response) => response.json())
+      .then(() => console.log("Task updated successfully."))
+      .catch((error) => console.log(`Error updating task: ${error}`));
+  }
+
   // Restore the user's tasks from the database.
   function restoreTasks() {
     const userId = localStorage.getItem(localStorageUserKey);
@@ -58,8 +85,8 @@ function ToDoContainer() {
         let restoredTasks = data.map((task) => {
           let newTask = new Task(task.description, task.due_date, task.uuid);
 
-          if (task.completed === 1) {
-            newTask.setCompleted();
+          if (task.completed) {
+            newTask.completed = true;
           }
 
           return newTask;
@@ -85,7 +112,11 @@ function ToDoContainer() {
         <h2 className="date-subheading">{fullDateFormatted}</h2>
       </div>
       <ToDoForm addTask={addTask} localStorageUserKey={localStorageUserKey} />
-      <ToDoList tasks={tasks} deleteTaskHandler={deleteTask} />
+      <ToDoList
+        tasks={tasks}
+        deleteTaskHandler={deleteTask}
+        updateTaskHandler={updateTask}
+      />
     </div>
   );
 }

@@ -8,22 +8,6 @@ class Task {
 
     this.completed = false;
   }
-
-  setDescription(description) {
-    this.description = description;
-  }
-
-  setDueDate(dueDate) {
-    this.dueDate = dueDate;
-  }
-
-  setCompleted() {
-    this.completed = true;
-  }
-
-  setIncomplete() {
-    this.completed = false;
-  }
 }
 
 export default Task;
