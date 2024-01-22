@@ -166,21 +166,31 @@ input[type=checkbox] {
 }
 .ToDoContainer .ToDoList {
   width: 100%;
-  height: 65%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   margin-top: 20px;
-  overflow-y: auto;
+  border: 1px solid black;
 }
-.ToDoContainer .ToDoList::-webkit-scrollbar {
+.ToDoContainer .ToDoList .list-content {
+  width: 100%;
+  height: 90%;
+  overflow-y: auto;
+  border: 1px solid red;
+}
+.ToDoContainer .ToDoList .list-content::-webkit-scrollbar {
   width: 10px;
   margin-left: 10px;
 }
-.ToDoContainer .ToDoList::-webkit-scrollbar-track {
+.ToDoContainer .ToDoList .list-content::-webkit-scrollbar-track {
   background: #d3d3d3;
 }
-.ToDoContainer .ToDoList::-webkit-scrollbar-thumb {
+.ToDoContainer .ToDoList .list-content::-webkit-scrollbar-thumb {
   background: #818589;
 }
-.ToDoContainer .ToDoList .Task {
+.ToDoContainer .ToDoList .list-content .Task {
   width: 100%;
   height: 70px;
   margin-bottom: 10px;
@@ -191,12 +201,12 @@ input[type=checkbox] {
   background-color: #638889;
   border-radius: 10px;
 }
-.ToDoContainer .ToDoList .Task .task-checkbox {
+.ToDoContainer .ToDoList .list-content .Task .task-checkbox {
   width: 25px;
   height: 25px;
   margin-left: 20px;
 }
-.ToDoContainer .ToDoList .Task .task-content-container {
+.ToDoContainer .ToDoList .list-content .Task .task-content-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -204,32 +214,32 @@ input[type=checkbox] {
   padding: 10px 0px 10px 25px;
   overflow: hidden;
 }
-.ToDoContainer .ToDoList .Task .task-content-container .task-description {
+.ToDoContainer .ToDoList .list-content .Task .task-content-container .task-description {
   width: 100%;
   height: auto;
   background-color: transparent;
   border: none;
   outline: none;
 }
-.ToDoContainer .ToDoList .Task .task-content-container .task-due-date {
+.ToDoContainer .ToDoList .list-content .Task .task-content-container .task-due-date {
   font-size: 16px;
   font-family: "Poppins ExtraLight";
   color: #faf9f6;
   cursor: default;
 }
-.ToDoContainer .ToDoList .Task .delete-task-button-container {
+.ToDoContainer .ToDoList .list-content .Task .delete-task-button-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.ToDoContainer .ToDoList .Task .delete-task-button-container button {
+.ToDoContainer .ToDoList .list-content .Task .delete-task-button-container button {
   background-color: transparent;
   padding: 5px 5px;
   font-size: 19px;
 }
-.ToDoContainer .ToDoList .Task .delete-task-button-container button .icon {
+.ToDoContainer .ToDoList .list-content .Task .delete-task-button-container button .icon {
   color: #faf9f6;
 }
-.ToDoContainer .ToDoList .Task .delete-task-button-container button:hover .icon.fa-trash {
+.ToDoContainer .ToDoList .list-content .Task .delete-task-button-container button:hover .icon.fa-trash {
   color: #ffcccc;
 }

@@ -106,83 +106,97 @@
 
   .ToDoList {
     width: 100%;
-    height: 65%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
     margin-top: 20px;
-    overflow-y: auto;
 
-    &::-webkit-scrollbar {
-      width: 10px;
-      margin-left: 10px;
-    }
+    border: 1px solid black;
 
-    &::-webkit-scrollbar-track {
-      background: $light-grey;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background: $gunmetal-grey;
-    }
-
-    .Task {
+    .list-content {
       width: 100%;
-      height: 70px;
-      margin-bottom: 10px;
+      height: 90%;
+      overflow-y: auto;
 
-      display: grid;
-      grid-template-columns: auto 8fr 1fr;
-      align-items: center;
-      justify-content: flex-start;
+      border: 1px solid red;
 
-      background-color: $theme-color-blue;
-      border-radius: 10px;
-
-      .task-checkbox {
-        width: 25px;
-        height: 25px;
-        margin-left: 20px;
+      &::-webkit-scrollbar {
+        width: 10px;
+        margin-left: 10px;
       }
 
-      .task-content-container {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 10px 0px 10px 25px;
-        overflow: hidden;
-
-        .task-description {
-          width: 100%;
-          height: auto;
-          background-color: transparent;
-          border: none;
-          outline: none;
-        }
-
-        .task-due-date {
-          font-size: 16px;
-          font-family: "Poppins ExtraLight";
-          color: $text-color-white;
-          cursor: default;
-        }
+      &::-webkit-scrollbar-track {
+        background: $light-grey;
       }
 
-      .delete-task-button-container {
-        display: flex;
+      &::-webkit-scrollbar-thumb {
+        background: $gunmetal-grey;
+      }
+
+      .Task {
+        width: 100%;
+        height: 70px;
+        margin-bottom: 10px;
+
+        display: grid;
+        grid-template-columns: auto 8fr 1fr;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
 
-        button {
-          background-color: transparent;
-          padding: 5px 5px;
-          font-size: 19px;
+        background-color: $theme-color-blue;
+        border-radius: 10px;
 
-          .icon {
-            color: $text-color-white;
+        .task-checkbox {
+          width: 25px;
+          height: 25px;
+          margin-left: 20px;
+        }
+
+        .task-content-container {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          padding: 10px 0px 10px 25px;
+          overflow: hidden;
+
+          .task-description {
+            width: 100%;
+            height: auto;
+            background-color: transparent;
+            border: none;
+            outline: none;
           }
 
-          &:hover {
-            .icon.fa-trash {
-              color: $error-red;
+          .task-due-date {
+            font-size: 16px;
+            font-family: "Poppins ExtraLight";
+            color: $text-color-white;
+            cursor: default;
+          }
+        }
+
+        .delete-task-button-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          button {
+            background-color: transparent;
+            padding: 5px 5px;
+            font-size: 19px;
+
+            .icon {
+              color: $text-color-white;
+            }
+
+            &:hover {
+              .icon.fa-trash {
+                color: $error-red;
+              }
             }
           }
         }
