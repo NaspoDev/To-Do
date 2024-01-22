@@ -5,6 +5,7 @@ import { months } from "../utility/dates";
 function Task({
   description,
   dueDate,
+  completed,
   index,
   deleteTaskHandler,
   updateTaskHandler,
@@ -15,6 +16,7 @@ function Task({
         type="checkbox"
         className="task-checkbox"
         onChange={handleCheckboxClick}
+        checked={completed}
       />
 
       <div className="task-content-container">

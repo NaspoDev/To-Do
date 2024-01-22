@@ -24,6 +24,7 @@ function ToDoList({ tasks, deleteTaskHandler, updateTaskHandler }) {
                 key={index}
                 description={task.description}
                 dueDate={task.dueDate}
+                completed={task.completed}
                 index={index}
                 deleteTaskHandler={deleteTaskHandler}
                 updateTaskHandler={updateTaskHandler}
@@ -35,7 +36,7 @@ function ToDoList({ tasks, deleteTaskHandler, updateTaskHandler }) {
 
       <div className="toggle-list-state-button-container">
         <button className="toggle-list-state-button" onClick={toggleListState}>
-          {listState ? "Show Completed" : "Show Active"}
+          {listState === 0 ? "Show Completed" : "Show Active"}
         </button>
       </div>
     </div>
