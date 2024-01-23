@@ -83,8 +83,18 @@ function ToDoContainer() {
         console.log(`Restoring tasks for user ${userId}...`);
         // Create a list of Task objects from the data and set the tasks state.
         let restoredTasks = data.map((task) => {
-          let newTask = new Task(task.description, task.due_date, task.uuid);
+          // Format the due date if it exists.
+          let dueDateFormatted = null;
+          if (task.due_date !== null) {
+            dueDateFormatted = new Date(task.due_date)
+              .toISOString()
+              .slice(0, 19);
+          }
 
+          // Create a new Task object.
+          let newTask = new Task(task.description, dueDateFormatted, task.uuid);
+
+          // Set the completed status if it exists.
           if (task.completed) {
             newTask.completed = true;
           }
