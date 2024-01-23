@@ -63,7 +63,6 @@ router.get("/user/:id", (req, res) => {
 
 // create a new task
 router.post("/", (req, res) => {
-  console.log(req.body);
   const { description, dueDate, userId, uuid } = req.body;
   // if dueDate is null, set dueDateValue to null, otherwise set it to the value in dueDate
   const dueDateValue = dueDate ? dueDate : null;

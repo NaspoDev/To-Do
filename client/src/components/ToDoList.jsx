@@ -7,29 +7,38 @@ function ToDoList({ tasks, deleteTaskHandler, updateTaskHandler }) {
   // List state to display. 0 = active tasks (incomplete tasks), 1 = completed tasks
   const [listState, setListState] = useState(0);
 
-  // Filter the tasks based on the list state.
-  // If the list state is 0, return all tasks that are not completed,
-  // otherwise return all tasks that are completed.
-  const filteredTasks = tasks.filter((task) => {
-    return listState === 0 ? !task.completed : task.completed;
-  });
-
   return (
     <div className="ToDoList">
       <div className="list-content">
         <ul>
-          {filteredTasks.map((task, index) => {
-            return (
-              <Task
-                key={index}
-                description={task.description}
-                dueDate={task.dueDate}
-                completed={task.completed}
-                index={index}
-                deleteTaskHandler={deleteTaskHandler}
-                updateTaskHandler={updateTaskHandler}
-              />
-            );
+          {tasks.map((task, index) => {
+            // If the list state is 0 (active), render all tasks that are not completed.
+            if (listState === 0 && !task.completed) {
+              return (
+                <Task
+                  key={index}
+                  description={task.description}
+                  dueDate={task.dueDate}
+                  completed={task.completed}
+                  index={index}
+                  deleteTaskHandler={deleteTaskHandler}
+                  updateTaskHandler={updateTaskHandler}
+                />
+              );
+              // If the list state is 1 (completed), render all tasks that are completed.
+            } else if (listState === 1 && task.completed) {
+              return (
+                <Task
+                  key={index}
+                  description={task.description}
+                  dueDate={task.dueDate}
+                  completed={task.completed}
+                  index={index}
+                  deleteTaskHandler={deleteTaskHandler}
+                  updateTaskHandler={updateTaskHandler}
+                />
+              );
+            }
           })}
         </ul>
       </div>
