@@ -1,6 +1,7 @@
 // Task component. The actual task item that will be displayed in the list.
 
 import { months } from "../utility/dates";
+import { useState } from "react";
 
 function Task({
   description,
@@ -10,13 +11,16 @@ function Task({
   deleteTaskHandler,
   updateTaskHandler,
 }) {
+  // State to keep track of whether the task is checked or not.
+  const [isChecked, setIsChecked] = useState(completed);
+
   return (
     <li className="Task">
       <input
         type="checkbox"
         className="task-checkbox"
         onChange={handleCheckboxClick}
-        checked={completed}
+        checked={isChecked}
       />
 
       <div className="task-content-container">
@@ -57,8 +61,18 @@ function Task({
   }
 
   // When the checkbox is clicked, update the task's completed status.
-  function handleCheckboxClick(event) {
-    if (event.currentTarget.checked) {
+  async function handleCheckboxClick() {
+    // Need to use a variable to store the new checked state because
+    // setIsChecked is asynchronous and will not update the state immediately.
+    // So our if statement below would read the old state.
+    const newCheckedState = !isChecked;
+    setIsChecked(newCheckedState);
+
+    // Wait a short delay before updating the task's completed status for a smoother transition.
+    await new Promise((resolve) => setTimeout(resolve, 80));
+
+    // Update the task client-side and server-side.
+    if (newCheckedState) {
       updateTaskHandler(index, description, dueDate, true);
     } else {
       updateTaskHandler(index, description, dueDate, false);
