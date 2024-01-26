@@ -289,6 +289,13 @@ input[type=checkbox] {
     width: 10%;
     padding: 10px 10px;
   }
+  .ToDoContainer .ToDoList {
+    height: 78%;
+  }
+  .ToDoContainer .ToDoList .toggle-list-state-button-container {
+    height: auto;
+    padding: 15px 0px 5px 0px;
+  }
   .ToDoContainer .ToDoList .toggle-list-state-button-container .toggle-list-state-button {
     font-size: 16px;
     padding: 10px 20px;
@@ -323,5 +330,34 @@ input[type=checkbox] {
   }
   .App .ToDoContainer .ToDoList .Task .task-content-container .task-due-date {
     font-size: 15px;
+  }
+}
+@media (max-width: 450px) {
+  .App .ToDoContainer {
+    padding: 5px 10px;
+  }
+  .App .ToDoContainer .ToDoForm .to-do-input-field input[type=text] {
+    width: 80%;
+  }
+  .App .ToDoContainer .ToDoForm .to-do-input-field .due-date-button,
+  .App .ToDoContainer .ToDoForm .to-do-input-field .submit-to-do-button {
+    font-size: 16px;
+  }
+  .App .ToDoContainer .ToDoList .Task {
+    height: 60px;
+  }
+  .App .ToDoContainer .ToDoList .Task .task-checkbox {
+    margin-left: 10px;
+  }
+  .App .ToDoContainer .ToDoList .Task .task-content-container {
+    padding: 5px 0px 5px 10px;
+  }
+  .App .ToDoContainer .ToDoList .Task .delete-task-button-container button {
+    font-size: 18px;
+    padding-right: 10px;
+  }
+  .App .ToDoContainer .ToDoList .toggle-list-state-button-container .toggle-list-state-button {
+    font-size: 16px;
+    padding: 5px 10px;
   }
 }
