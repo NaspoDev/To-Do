@@ -249,3 +249,79 @@ input[type=checkbox] {
   align-items: flex-end;
   justify-content: flex-start;
 }
+
+@media (max-width: 1300px) {
+  .ToDoContainer {
+    width: 60%;
+  }
+}
+@media (max-width: 1000px) {
+  .ToDoContainer {
+    width: 70%;
+  }
+}
+@media (max-width: 800px) {
+  .ToDoContainer {
+    width: 80%;
+  }
+  .ToDoContainer .heading-area {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .ToDoContainer .heading-area .main-heading {
+    font-size: 40px;
+  }
+  .ToDoContainer .heading-area .date-subheading {
+    font-size: 20px;
+  }
+  .ToDoContainer .ToDoForm .to-do-input-field {
+    display: flex;
+    flex-direction: row;
+  }
+  .ToDoContainer .ToDoForm .to-do-input-field input[type=text] {
+    width: 80%;
+  }
+  .ToDoContainer .ToDoForm .to-do-input-field .due-date-button {
+    width: 10%;
+    padding: 10px 10px;
+  }
+  .ToDoContainer .ToDoForm .to-do-input-field .submit-to-do-button {
+    width: 10%;
+    padding: 10px 10px;
+  }
+  .ToDoContainer .ToDoList .toggle-list-state-button-container .toggle-list-state-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}
+@media (max-width: 600px) {
+  .App .ToDoContainer {
+    padding: 5px 20px;
+  }
+  .App .ToDoContainer .heading-area .main-heading {
+    font-size: 38px;
+  }
+  .App .ToDoContainer .heading-area .date-subheading {
+    font-size: 19px;
+  }
+  .App .ToDoContainer .ToDoForm .to-do-input-field input[type=text] {
+    font-size: 16px;
+  }
+  .App .ToDoContainer .ToDoList .Task {
+    height: 60px;
+    grid-template-columns: auto 7fr 1fr;
+  }
+  .App .ToDoContainer .ToDoList .Task .task-checkbox {
+    width: 20px;
+    height: 20px;
+  }
+  .App .ToDoContainer .ToDoList .Task .task-content-container {
+    padding: 5px 0px 5px 15px;
+  }
+  .App .ToDoContainer .ToDoList .Task .task-content-container .task-description {
+    font-size: 16px;
+  }
+  .App .ToDoContainer .ToDoList .Task .task-content-container .task-due-date {
+    font-size: 15px;
+  }
+}

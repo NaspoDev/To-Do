@@ -209,3 +209,114 @@
     }
   }
 }
+
+// Responsive Design
+
+@media (max-width: 1300px) {
+  .ToDoContainer {
+    width: 60%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .ToDoContainer {
+    width: 70%;
+  }
+}
+
+@media (max-width: 800px) {
+  .ToDoContainer {
+    width: 80%;
+
+    .heading-area {
+      height: fit-content;
+
+      .main-heading {
+        font-size: 40px;
+      }
+
+      .date-subheading {
+        font-size: 20px;
+      }
+    }
+
+    .ToDoForm {
+      .to-do-input-field {
+        display: flex;
+        flex-direction: row;
+
+        input[type="text"] {
+          width: 80%;
+        }
+
+        .due-date-button {
+          width: 10%;
+          padding: 10px 10px;
+        }
+
+        .submit-to-do-button {
+          width: 10%;
+          padding: 10px 10px;
+        }
+      }
+    }
+
+    .ToDoList {
+      .toggle-list-state-button-container {
+        .toggle-list-state-button {
+          font-size: 16px;
+          padding: 10px 20px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .App {
+    .ToDoContainer {
+      padding: 5px 20px;
+
+      .heading-area {
+        .main-heading {
+          font-size: 38px;
+        }
+
+        .date-subheading {
+          font-size: 19px;
+        }
+      }
+
+      .ToDoForm {
+        .to-do-input-field {
+          input[type="text"] {
+            font-size: 16px;
+          }
+        }
+      }
+
+      .ToDoList {
+        .Task {
+          height: 60px;
+          grid-template-columns: auto 7fr 1fr;
+
+          .task-checkbox {
+            width: 20px;
+            height: 20px;
+          }
+
+          .task-content-container {
+            padding: 5px 0px 5px 15px;
+            .task-description {
+              font-size: 16px;
+            }
+
+            .task-due-date {
+              font-size: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
