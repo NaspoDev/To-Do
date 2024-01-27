@@ -4,7 +4,8 @@
   "description": "To-Do WebApp Backend (server)",
   "main": "server.js",
   "scripts": {
-    "dev": "set NODE_ENV=development&& nodemon server.js"
+    "dev": "set NODE_ENV=development&& nodemon server.js",
+    "start": "node server.js"
   },
   "keywords": [
     "backend"

@@ -1,0 +1,2 @@
+# Ignore our installed dependencies here since we're installing them in the Dockerfile to our docker app.
+node_modules/
