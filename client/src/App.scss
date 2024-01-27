@@ -226,7 +226,7 @@
 
 @media (max-width: 800px) {
   .ToDoContainer {
-    width: 80%;
+    width: 90%;
 
     .heading-area {
       height: fit-content;
@@ -280,6 +280,8 @@
 @media (max-width: 600px) {
   .App {
     .ToDoContainer {
+      width: 100%;
+      height: 100%;
       padding: 5px 20px;
 
       .heading-area {
@@ -331,6 +333,16 @@
     .ToDoContainer {
       padding: 5px 10px;
 
+      .heading-area {
+        .main-heading {
+          font-size: 32px;
+        }
+
+        .date-subheading {
+          font-size: 17px;
+        }
+      }
+
       .ToDoForm {
         .to-do-input-field {
           input[type="text"] {
@@ -339,6 +351,7 @@
 
           .due-date-button,
           .submit-to-do-button {
+            width: auto;
             font-size: 16px;
           }
         }
