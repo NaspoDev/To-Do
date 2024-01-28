@@ -13,5 +13,9 @@ RUN npm install
 # Copy all files from current directory to our image's working directory (/app)
 COPY . .
 
+# Expose port 3000. This is the port that our express app is running on.
+# Since docker images run in a container, we need to expose the port to the host machine.
+EXPOSE 3000
+
 # Run the app
 CMD ["npm", "start"]
