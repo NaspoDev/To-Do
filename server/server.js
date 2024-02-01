@@ -8,7 +8,11 @@ const app = express();
 const port = 3000;
 
 const cors = require("cors");
-app.use(cors());
+// Enable CORS with express for development environment, otherwise let Nginx handle it in production.
+if (process.env.NODE_ENV === "development") {
+  app.use(cors());
+}
+
 app.use(express.json());
 
 // routes
