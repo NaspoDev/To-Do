@@ -84,8 +84,7 @@ input[type=checkbox] {
   align-items: center;
   justify-content: center;
 }
-
-.ToDoContainer {
+.App .ToDoContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,7 +95,7 @@ input[type=checkbox] {
   background-color: #ebd9b4;
   box-shadow: #212427 7px 7px 10px 0px;
 }
-.ToDoContainer .heading-area {
+.App .ToDoContainer .heading-area {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -104,17 +103,17 @@ input[type=checkbox] {
   width: 100%;
   height: 15%;
 }
-.ToDoContainer .heading-area .main-heading,
-.ToDoContainer .heading-area .date-subheading {
+.App .ToDoContainer .heading-area .main-heading,
+.App .ToDoContainer .heading-area .date-subheading {
   color: #212427;
 }
-.ToDoContainer .heading-area .date-subheading {
+.App .ToDoContainer .heading-area .date-subheading {
   font-size: 22px;
   font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-style: normal;
 }
-.ToDoContainer .ToDoForm {
+.App .ToDoContainer .ToDoForm {
   width: 100%;
   height: 50px;
   display: flex;
@@ -123,42 +122,42 @@ input[type=checkbox] {
   position: relative;
   overflow-y: visible;
 }
-.ToDoContainer .ToDoForm .to-do-input-field {
+.App .ToDoContainer .ToDoForm .to-do-input-field {
   width: 100%;
   height: 50px;
   display: grid;
   grid-template-columns: 7fr auto auto;
   gap: 5px;
 }
-.ToDoContainer .ToDoForm .to-do-input-field input[type=text] {
+.App .ToDoContainer .ToDoForm .to-do-input-field input[type=text] {
   border: none;
   outline: none;
   padding: 0 10px;
   background-color: #9dbc98;
 }
-.ToDoContainer .ToDoForm .to-do-input-field input[type=text]::placeholder, .ToDoContainer .ToDoForm .to-do-input-field input[type=text]::-webkit-input-placeholder, .ToDoContainer .ToDoForm .to-do-input-field input[type=text]::-moz-placeholder {
+.App .ToDoContainer .ToDoForm .to-do-input-field input[type=text]::placeholder, .App .ToDoContainer .ToDoForm .to-do-input-field input[type=text]::-webkit-input-placeholder, .App .ToDoContainer .ToDoForm .to-do-input-field input[type=text]::-moz-placeholder {
   color: #faf9f6;
 }
-.ToDoContainer .ToDoForm .to-do-input-field input[type=text]:focus {
+.App .ToDoContainer .ToDoForm .to-do-input-field input[type=text]:focus {
   border: 1px solid #638889;
 }
-.ToDoContainer .ToDoForm .due-date-selector-container {
+.App .ToDoContainer .ToDoForm .due-date-selector-container {
   align-self: flex-end;
   margin-top: 10px;
   width: auto;
   height: 50px;
 }
-.ToDoContainer .ToDoForm .due-date-selector-container .due-date-selector {
+.App .ToDoContainer .ToDoForm .due-date-selector-container .due-date-selector {
   font-size: 16px;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
   background-color: #333333;
 }
-.ToDoContainer .ToDoForm .due-date-selector-container .due-date-selector.hidden {
+.App .ToDoContainer .ToDoForm .due-date-selector-container .due-date-selector.hidden {
   display: none;
 }
-.ToDoContainer .ToDoList {
+.App .ToDoContainer .ToDoList {
   width: 100%;
   height: 70%;
   display: flex;
@@ -167,22 +166,22 @@ input[type=checkbox] {
   justify-content: flex-start;
   margin-top: 20px;
 }
-.ToDoContainer .ToDoList .list-content {
+.App .ToDoContainer .ToDoList .list-content {
   width: 100%;
   height: 90%;
   overflow-y: auto;
 }
-.ToDoContainer .ToDoList .list-content::-webkit-scrollbar {
+.App .ToDoContainer .ToDoList .list-content::-webkit-scrollbar {
   width: 10px;
   margin-left: 10px;
 }
-.ToDoContainer .ToDoList .list-content::-webkit-scrollbar-track {
+.App .ToDoContainer .ToDoList .list-content::-webkit-scrollbar-track {
   background: #d3d3d3;
 }
-.ToDoContainer .ToDoList .list-content::-webkit-scrollbar-thumb {
+.App .ToDoContainer .ToDoList .list-content::-webkit-scrollbar-thumb {
   background: #818589;
 }
-.ToDoContainer .ToDoList .list-content .Task {
+.App .ToDoContainer .ToDoList .list-content .Task {
   width: 100%;
   height: 70px;
   margin-bottom: 10px;
@@ -193,12 +192,12 @@ input[type=checkbox] {
   background-color: #638889;
   border-radius: 10px;
 }
-.ToDoContainer .ToDoList .list-content .Task .task-checkbox {
+.App .ToDoContainer .ToDoList .list-content .Task .task-checkbox {
   width: 25px;
   height: 25px;
   margin-left: 20px;
 }
-.ToDoContainer .ToDoList .list-content .Task .task-content-container {
+.App .ToDoContainer .ToDoList .list-content .Task .task-content-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -206,14 +205,14 @@ input[type=checkbox] {
   padding: 10px 0px 10px 25px;
   overflow: hidden;
 }
-.ToDoContainer .ToDoList .list-content .Task .task-content-container .task-description {
+.App .ToDoContainer .ToDoList .list-content .Task .task-content-container .task-description {
   width: 100%;
   height: auto;
   background-color: transparent;
   border: none;
   outline: none;
 }
-.ToDoContainer .ToDoList .list-content .Task .task-content-container .task-due-date {
+.App .ToDoContainer .ToDoList .list-content .Task .task-content-container .task-due-date {
   font-size: 16px;
   font-family: "Poppins", sans-serif;
   font-weight: 200;
@@ -221,29 +220,46 @@ input[type=checkbox] {
   color: #faf9f6;
   cursor: default;
 }
-.ToDoContainer .ToDoList .list-content .Task .delete-task-button-container {
+.App .ToDoContainer .ToDoList .list-content .Task .delete-task-button-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.ToDoContainer .ToDoList .list-content .Task .delete-task-button-container button {
+.App .ToDoContainer .ToDoList .list-content .Task .delete-task-button-container button {
   background-color: transparent;
   padding: 5px 5px;
   font-size: 19px;
 }
-.ToDoContainer .ToDoList .list-content .Task .delete-task-button-container button .icon {
+.App .ToDoContainer .ToDoList .list-content .Task .delete-task-button-container button .icon {
   color: #faf9f6;
 }
-.ToDoContainer .ToDoList .list-content .Task .delete-task-button-container button:hover .icon.fa-trash {
+.App .ToDoContainer .ToDoList .list-content .Task .delete-task-button-container button:hover .icon.fa-trash {
   color: #ffcccc;
 }
-.ToDoContainer .ToDoList .toggle-list-state-button-container {
+.App .ToDoContainer .ToDoList .toggle-list-state-button-container {
   width: 100%;
   height: 10%;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-start;
+}
+.App .footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  gap: 6px;
+}
+.App .footer .github-icon {
+  width: 25px;
+}
+.App .footer .credit-tag {
+  color: #212427;
+}
+.App .footer .credit-tag a {
+  color: #9dbc98;
 }
 
 @media (max-width: 1300px) {

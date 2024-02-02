@@ -10,202 +10,224 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
 
-.ToDoContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
-  width: 50%;
-  height: 90%;
-  padding: 10px 30px;
-  background-color: $theme-color-tan;
-  box-shadow: $text-color-black 7px 7px 10px 0px;
-
-  .heading-area {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-
-    width: 100%;
-    height: 15%;
-
-    .main-heading,
-    .date-subheading {
-      color: $text-color-black;
-    }
-
-    .date-subheading {
-      font-size: 22px;
-      @include font-PoppinsExtraLight;
-    }
-  }
-
-  // ToDoForm
-
-  .ToDoForm {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    position: relative;
-    overflow-y: visible;
-
-    .to-do-input-field {
-      width: 100%;
-      height: 50px;
-      display: grid;
-      grid-template-columns: 7fr auto auto;
-      gap: 5px;
-
-      input[type="text"] {
-        border: none;
-        outline: none;
-        padding: 0 10px;
-        background-color: $theme-color-green;
-
-        &::placeholder,
-        &::-webkit-input-placeholder,
-        &::-moz-placeholder {
-          color: $text-color-white;
-        }
-
-        &:focus {
-          border: 1px solid $theme-color-blue;
-        }
-      }
-    }
-
-    .due-date-selector-container {
-      align-self: flex-end;
-      margin-top: 10px;
-
-      width: auto;
-      height: 50px;
-
-      .due-date-selector {
-        font-size: 16px;
-        padding: 10px 20px;
-
-        border: none;
-        border-radius: 10px;
-        background-color: $dark-grey;
-
-        // need to set display to none because it interferes
-        // with the edit and delete buttons of the first task in the list.
-        &.hidden {
-          display: none;
-        }
-      }
-    }
-  }
-
-  .ToDoList {
-    width: 100%;
-    height: 70%;
+  .ToDoContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
 
-    margin-top: 20px;
+    width: 50%;
+    height: 90%;
+    padding: 10px 30px;
+    background-color: $theme-color-tan;
+    box-shadow: $text-color-black 7px 7px 10px 0px;
 
-    .list-content {
+    .heading-area {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+
       width: 100%;
-      height: 90%;
-      overflow-y: auto;
+      height: 15%;
 
-      &::-webkit-scrollbar {
-        width: 10px;
-        margin-left: 10px;
+      .main-heading,
+      .date-subheading {
+        color: $text-color-black;
       }
 
-      &::-webkit-scrollbar-track {
-        background: $light-grey;
+      .date-subheading {
+        font-size: 22px;
+        @include font-PoppinsExtraLight;
       }
+    }
 
-      &::-webkit-scrollbar-thumb {
-        background: $gunmetal-grey;
-      }
+    // ToDoForm
 
-      .Task {
+    .ToDoForm {
+      width: 100%;
+      height: 50px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      position: relative;
+      overflow-y: visible;
+
+      .to-do-input-field {
         width: 100%;
-        height: 70px;
-        margin-bottom: 10px;
-
+        height: 50px;
         display: grid;
-        grid-template-columns: auto 8fr 1fr;
-        align-items: center;
-        justify-content: flex-start;
+        grid-template-columns: 7fr auto auto;
+        gap: 5px;
 
-        background-color: $theme-color-blue;
-        border-radius: 10px;
+        input[type="text"] {
+          border: none;
+          outline: none;
+          padding: 0 10px;
+          background-color: $theme-color-green;
 
-        .task-checkbox {
-          width: 25px;
-          height: 25px;
-          margin-left: 20px;
-        }
-
-        .task-content-container {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          justify-content: center;
-          padding: 10px 0px 10px 25px;
-          overflow: hidden;
-
-          .task-description {
-            width: 100%;
-            height: auto;
-            background-color: transparent;
-            border: none;
-            outline: none;
-          }
-
-          .task-due-date {
-            font-size: 16px;
-            @include font-PoppinsExtraLight;
+          &::placeholder,
+          &::-webkit-input-placeholder,
+          &::-moz-placeholder {
             color: $text-color-white;
-            cursor: default;
+          }
+
+          &:focus {
+            border: 1px solid $theme-color-blue;
           }
         }
+      }
 
-        .delete-task-button-container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
+      .due-date-selector-container {
+        align-self: flex-end;
+        margin-top: 10px;
 
-          button {
-            background-color: transparent;
-            padding: 5px 5px;
-            font-size: 19px;
+        width: auto;
+        height: 50px;
 
-            .icon {
-              color: $text-color-white;
-            }
+        .due-date-selector {
+          font-size: 16px;
+          padding: 10px 20px;
 
-            &:hover {
-              .icon.fa-trash {
-                color: $error-red;
-              }
-            }
+          border: none;
+          border-radius: 10px;
+          background-color: $dark-grey;
+
+          // need to set display to none because it interferes
+          // with the edit and delete buttons of the first task in the list.
+          &.hidden {
+            display: none;
           }
         }
       }
     }
 
-    .toggle-list-state-button-container {
+    .ToDoList {
       width: 100%;
-      height: 10%;
+      height: 70%;
       display: flex;
-      flex-direction: row;
-      align-items: flex-end;
+      flex-direction: column;
+      align-items: center;
       justify-content: flex-start;
+
+      margin-top: 20px;
+
+      .list-content {
+        width: 100%;
+        height: 90%;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          width: 10px;
+          margin-left: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: $light-grey;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: $gunmetal-grey;
+        }
+
+        .Task {
+          width: 100%;
+          height: 70px;
+          margin-bottom: 10px;
+
+          display: grid;
+          grid-template-columns: auto 8fr 1fr;
+          align-items: center;
+          justify-content: flex-start;
+
+          background-color: $theme-color-blue;
+          border-radius: 10px;
+
+          .task-checkbox {
+            width: 25px;
+            height: 25px;
+            margin-left: 20px;
+          }
+
+          .task-content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 10px 0px 10px 25px;
+            overflow: hidden;
+
+            .task-description {
+              width: 100%;
+              height: auto;
+              background-color: transparent;
+              border: none;
+              outline: none;
+            }
+
+            .task-due-date {
+              font-size: 16px;
+              @include font-PoppinsExtraLight;
+              color: $text-color-white;
+              cursor: default;
+            }
+          }
+
+          .delete-task-button-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            button {
+              background-color: transparent;
+              padding: 5px 5px;
+              font-size: 19px;
+
+              .icon {
+                color: $text-color-white;
+              }
+
+              &:hover {
+                .icon.fa-trash {
+                  color: $error-red;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .toggle-list-state-button-container {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    gap: 6px;
+    // border: 1px solid red;
+
+    .github-icon {
+      width: 25px;
+    }
+
+    .credit-tag {
+      color: $text-color-black;
+
+      a {
+        color: $theme-color-green;
+      }
     }
   }
 }
