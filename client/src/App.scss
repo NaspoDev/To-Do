@@ -356,6 +356,9 @@
 
 @media (max-width: 450px) {
   .App {
+    // Small viewport height units takes mobile browser UI overlays into account.
+    // Nothing is cut off by the browser UI (ie. search bar, menu options).
+    height: 100svh;
     .ToDoContainer {
       padding: 5px 10px;
 

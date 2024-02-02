@@ -351,6 +351,9 @@ input[type=checkbox] {
   }
 }
 @media (max-width: 450px) {
+  .App {
+    height: 100svh;
+  }
   .App .ToDoContainer {
     padding: 5px 10px;
   }
