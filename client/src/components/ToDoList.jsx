@@ -42,11 +42,36 @@ function ToDoList({ tasks, deleteTaskHandler, updateTaskHandler }) {
           })}
         </ul>
       </div>
-
-      <div className="toggle-list-state-button-container">
+      <div className="list-footer">
         <button className="toggle-list-state-button" onClick={toggleListState}>
           {listState === 0 ? "Show Completed" : "Show Active"}
         </button>
+        <div className="creator-credit-container">
+          <a
+            href="https://github.com/NaspoDev/To-Do-WebApp"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              className="github-icon"
+              src="./src/assets/images/github_icon.png"
+              alt="Github"
+            />
+          </a>
+          <p className="credit-tag">
+            Created by{" " /* Add a space before "Naspo"*/}
+            <a href="https://naspo.dev/" target="_blank" rel="noreferrer">
+              Naspo
+            </a>
+            .
+          </p>
+          {/* At mobile sizing, this is displayed instead of regular .credit-tag */}
+          <p className="credit-tag-mobile">
+            <a href="https://naspo.dev/" target="_blank" rel="noreferrer">
+              Naspo
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );
