@@ -87,7 +87,6 @@ function ToDoForm({ addTask, localStorageUserKey }) {
     // Create a new task in the database.
     // If there is no user for this session, create a new user.
     if (localStorage.getItem(localStorageUserKey) === null) {
-      console.log("user is null!");
       // Create a new user.
       // Await the response to ensure the user is created before creating the task.
       await fetch(`${apiUrl}/users`, {

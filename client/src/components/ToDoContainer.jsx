@@ -25,14 +25,22 @@ function ToDoContainer() {
   }
 
   // Lifting state up function to delete a task. Passed down to the Task component.
-  function deleteTask(taskIndex) {
+  function deleteTask(taskUUID) {
     // Remove the task client-side.
     let newTasks = [...tasks];
-    let removedTask = newTasks.splice(taskIndex, 1)[0];
+
+    // Find and remove the task.
+    for (let i = 0; i < newTasks.length; i++) {
+      if (newTasks[i].uuid === taskUUID) {
+        newTasks.splice(i, 1);
+        break;
+      }
+    }
+
     setTasks(newTasks);
 
     // Remove the task server-side.
-    fetch(`${apiURL}/tasks/${removedTask.uuid}`, {
+    fetch(`${apiURL}/tasks/${taskUUID}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -42,16 +50,24 @@ function ToDoContainer() {
 
   // Lifting state up function to update a task. Passed down to the Task component.
   // Updates the task client-side and server-side.
-  function updateTask(taskIndex, description, dueDate, completed) {
+  function updateTask(taskUUID, description, dueDate, completed) {
     // Update the task client-side.
     let newTasks = [...tasks];
-    newTasks[taskIndex].description = description;
-    newTasks[taskIndex].dueDate = dueDate;
-    newTasks[taskIndex].completed = completed;
+
+    // Find and update the task.
+    for (let i = 0; i < newTasks.length; i++) {
+      if (newTasks[i].uuid === taskUUID) {
+        newTasks[i].description = description;
+        newTasks[i].dueDate = dueDate;
+        newTasks[i].completed = completed;
+        break;
+      }
+    }
+
     setTasks(newTasks);
 
     // Update the task server-side.
-    fetch(`${apiURL}/tasks/${newTasks[taskIndex].uuid}`, {
+    fetch(`${apiURL}/tasks/${taskUUID}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

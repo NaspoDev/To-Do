@@ -11,16 +11,16 @@ function ToDoList({ tasks, deleteTaskHandler, updateTaskHandler }) {
     <div className="ToDoList">
       <div className="list-content">
         <ul>
-          {tasks.map((task, index) => {
+          {tasks.map((task) => {
             // If the list state is 0 (active), render all tasks that are not completed.
             if (listState === 0 && !task.completed) {
               return (
                 <Task
-                  key={index}
+                  key={task.uuid}
                   description={task.description}
                   dueDate={task.dueDate}
                   completed={task.completed}
-                  index={index}
+                  uuid={task.uuid}
                   deleteTaskHandler={deleteTaskHandler}
                   updateTaskHandler={updateTaskHandler}
                 />
@@ -29,11 +29,11 @@ function ToDoList({ tasks, deleteTaskHandler, updateTaskHandler }) {
             } else if (listState === 1 && task.completed) {
               return (
                 <Task
-                  key={index}
+                  key={task.uuid}
                   description={task.description}
                   dueDate={task.dueDate}
                   completed={task.completed}
-                  index={index}
+                  uuid={task.uuid}
                   deleteTaskHandler={deleteTaskHandler}
                   updateTaskHandler={updateTaskHandler}
                 />

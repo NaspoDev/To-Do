@@ -7,7 +7,7 @@ function Task({
   description,
   dueDate,
   completed,
-  index,
+  uuid,
   deleteTaskHandler,
   updateTaskHandler,
 }) {
@@ -57,7 +57,7 @@ function Task({
     }
 
     // Update the task client-side and server-side.
-    updateTaskHandler(index, event.currentTarget.value, dueDate, false);
+    updateTaskHandler(uuid, event.currentTarget.value, dueDate, false);
   }
 
   // When the checkbox is clicked, update the task's completed status.
@@ -73,15 +73,15 @@ function Task({
 
     // Update the task client-side and server-side.
     if (newCheckedState) {
-      updateTaskHandler(index, description, dueDate, true);
+      updateTaskHandler(uuid, description, dueDate, true);
     } else {
-      updateTaskHandler(index, description, dueDate, false);
+      updateTaskHandler(uuid, description, dueDate, false);
     }
   }
 
   // When the delete button for a task is clicked, delete the task.
   function handleDeleteTaskClick() {
-    deleteTaskHandler(index);
+    deleteTaskHandler(uuid);
   }
 }
 
