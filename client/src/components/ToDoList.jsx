@@ -2,6 +2,7 @@
 
 import Task from "./Task";
 import { useState } from "react";
+import IMAGES from "../assets/images/images";
 
 function ToDoList({ tasks, deleteTaskHandler, updateTaskHandler }) {
   // List state to display. 0 = active tasks (incomplete tasks), 1 = completed tasks
@@ -52,11 +53,7 @@ function ToDoList({ tasks, deleteTaskHandler, updateTaskHandler }) {
             target="_blank"
             rel="noreferrer"
           >
-            <img
-              className="github-icon"
-              src="./src/assets/images/github_icon.png"
-              alt="Github"
-            />
+            <img className="github-icon" src={IMAGES.githubIcon} alt="Github" />
           </a>
           <p className="credit-tag">
             Created by{" " /* Add a space before "Naspo"*/}
