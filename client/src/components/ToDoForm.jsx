@@ -62,7 +62,7 @@ function ToDoForm({ addTask, localStorageUserKey }) {
   );
 
   // Submit's form data to the server to create a new task.
-  function handleFormSubmit(event) {
+  async function handleFormSubmit(event) {
     // Prevent the form from refreshing the page on submit.
     event.preventDefault();
 
@@ -87,8 +87,10 @@ function ToDoForm({ addTask, localStorageUserKey }) {
     // Create a new task in the database.
     // If there is no user for this session, create a new user.
     if (localStorage.getItem(localStorageUserKey) === null) {
+      console.log("user is null!");
       // Create a new user.
-      fetch(`${apiUrl}/users`, {
+      // Await the response to ensure the user is created before creating the task.
+      await fetch(`${apiUrl}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
