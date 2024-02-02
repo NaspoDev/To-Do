@@ -40,7 +40,7 @@
 
     .date-subheading {
       font-size: 22px;
-      font-family: "Poppins ExtraLight";
+      @include font-PoppinsExtraLight;
     }
   }
 
@@ -169,7 +169,7 @@
 
           .task-due-date {
             font-size: 16px;
-            font-family: "Poppins ExtraLight";
+            @include font-PoppinsExtraLight;
             color: $text-color-white;
             cursor: default;
           }

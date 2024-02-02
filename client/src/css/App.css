@@ -9,24 +9,14 @@ html {
   scroll-behavior: smooth;
 }
 
-@font-face {
-  font-family: "Poppins Medium";
-  src: url(src/assets/fonts/Poppins-Medium.ttf);
-}
-@font-face {
-  font-family: "Poppins Regular";
-  src: url(src/assets/fonts/Poppins-Regular.ttf);
-}
-@font-face {
-  font-family: "Poppins ExtraLight";
-  src: url(src/assets/fonts/Poppins-ExtraLight.ttf);
-}
 body {
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, li, a {
-  font-family: "Poppins Medium";
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
   color: #faf9f6;
 }
 
@@ -43,7 +33,9 @@ h3 {
 }
 
 p, button, input, textarea {
-  font-family: "Poppins Regular";
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   color: #faf9f6;
   font-size: 18px;
 }
@@ -118,7 +110,9 @@ input[type=checkbox] {
 }
 .ToDoContainer .heading-area .date-subheading {
   font-size: 22px;
-  font-family: "Poppins ExtraLight";
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
 }
 .ToDoContainer .ToDoForm {
   width: 100%;
@@ -221,7 +215,9 @@ input[type=checkbox] {
 }
 .ToDoContainer .ToDoList .list-content .Task .task-content-container .task-due-date {
   font-size: 16px;
-  font-family: "Poppins ExtraLight";
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
   color: #faf9f6;
   cursor: default;
 }

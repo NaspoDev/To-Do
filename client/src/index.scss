@@ -12,23 +12,27 @@ html {
 }
 
 // Fonts
+// Using mixins to easily apply fonts from the google fonts import.
+
 // Bolder font face, mainly used for headings.
-@font-face {
-  font-family: "Poppins Medium";
-  src: url(src/assets/fonts/Poppins-Medium.ttf);
+@mixin font-PoppinsMedium {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
 // Regular font face, mainly used for paragraphs.
-@font-face {
-  font-family: "Poppins Regular";
-  src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJbecmNE.woff2)
-    format("woff2");
+@mixin font-PoppinsRegular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 // Light font face.
-@font-face {
-  font-family: "Poppins ExtraLight";
-  src: url(src/assets/fonts/Poppins-ExtraLight.ttf);
+@mixin font-PoppinsExtraLight {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: normal;
 }
 
 // Variables
@@ -51,7 +55,7 @@ body {
 
 // prettier-ignore
 h1, h2, h3, h4, h5, h6, li, a {
-    font-family: "Poppins Medium";
+    @include font-PoppinsMedium;
     color: $text-color-white;
   }
 
@@ -69,7 +73,7 @@ h3 {
 
 // prettier-ignore
 p, button, input, textarea {
-  font-family: "Poppins Regular";
+  @include font-PoppinsRegular;
   color: $text-color-white;
   font-size: 18px;
   }
