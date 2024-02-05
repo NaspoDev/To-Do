@@ -1,8 +1,7 @@
 // Manages the database connection (dev vs. prod).
 
 const mysql = require("mysql2");
-// Establish database connection pool to prod database by default.
-let connectionPool;
+let connectionPool; // Connection pool for our MySQL database.
 
 // If in development mode, use dev database.
 if (process.env.NODE_ENV === "development") {
