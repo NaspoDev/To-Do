@@ -3,12 +3,12 @@
 // load environment variables
 require("dotenv").config();
 
-// Import CORS (used for development)
-const cors = require("cors");
-
 const express = require("express");
 const app = express();
 const port = 3000;
+
+// Import CORS (used for development)
+const cors = require("cors");
 
 // IP address restriction middleware (for production)
 const clientHostname = "todo.naspoapps.com";
@@ -20,12 +20,14 @@ function restrictAccess(req, res, next) {
   }
 }
 
-// Applying middleware
+// Apply middleware
 app.use(express.json()); // for parsing application/json
+
 // Enable CORS with express for development environment, otherwise let Nginx handle it in production.
 if (process.env.NODE_ENV === "development") {
   app.use(cors());
 }
+
 // Enable IP address restriction middleware in production.
 if (process.env.NODE_ENV !== "development") {
   app.use(restrictAccess);
