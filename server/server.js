@@ -11,9 +11,9 @@ const port = 3000;
 const cors = require("cors");
 
 // IP address restriction middleware (for production)
-const clientHostname = "todo.naspoapps.com";
+const clientOrigin = "https://todo.naspoapps.com";
 function restrictAccess(req, res, next) {
-  if (req.hostname === clientHostname) {
+  if (req.headers.origin === clientOrigin) {
     next();
   } else {
     res.status(401).json({ message: "Unauthorized" });
